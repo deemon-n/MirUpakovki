@@ -1,0 +1,32 @@
+﻿.dtv
+{
+}
+.dtv_i_normal
+{
+    font-size: 12px;
+}
+.dtv_i_hover
+{
+    font-size: 12px;
+}
+.dtv_i_selected
+{
+    font-size: 12px;
+    font-weight: bold;
+}
+.leftCell
+{
+    border: solid 1px rgb(204, 204, 204);
+    vertical-align: top;
+    width: 20%;
+}
+.rightCell
+{
+    vertical-align: top;
+}
+.ifContent
+{
+    border-width: 0px;
+    height: 100%;
+    width: 100%;
+}

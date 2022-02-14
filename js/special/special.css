@@ -1,0 +1,15 @@
+﻿ #hpvgd,.h-mdiv,.h-mdiv2,.h-ldiv,.h-rdiv {background:#EAEAEA; color:#6D6D6D;}
+ #hpvgd {width:100%; z-index:100; width:100%; border-bottom:2px solid rgb(230,230,230);}
+ .h-mdiv {display:none; position:relative; margin:auto; text-alegn:center;}
+ .h-mdiv2 {display:none; position:fixed; margin:auto; text-alegn:center; width:400px; height:200px;}
+ .h-ldiv {float:left; padding:7px 10px 7px 0px;}
+ .h-rdiv {position:absolute; top:7px; right:0px; text-align:right;}
+ .h-ni {display:none !important;}
+ a.hcmaf {color:red !important; margin-left:5px; font-size:20px; font-weight:bold;}
+ a.h-anl {color:#2a72cc;}
+ a.h-al {color:#ED664B !important;}
+ .h-fi {font-weight:bold; border-radius:50%; padding:0px 8px; margin-right:5px; font-size:19px;}
+ .h-background-1 {color:#fff !important; background:#000 !important; text-shadow: none !important;}
+ .h-background-2 {color:#000 !important; background:#fff !important;  text-shadow: none !important;}
+ .h-background-3 {color:#063462 !important; background:#9DD1FF !important; text-shadow: none !important;}
+ #maf {color:#000;}

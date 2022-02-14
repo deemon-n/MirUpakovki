@@ -1,0 +1,226 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+	/*#top-menu .menu-name
+	{
+		display:none;
+	}
+	.item-top-menu-flex
+	{
+		height:auto;
+	}*/
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	.top_links {
+		background-color: #71523D;
+		display: none;
+		margin-top: 40px;
+		padding: 14px;
+		position: absolute;
+		top:0;
+		vertical-align: middle;
+		width: 100%;
+	}
+	#btnSearchHeader
+	{
+		display:none;
+	}
+	#tbSearchHeader
+	{
+		width:100%;
+	}
+	.header-search
+	{
+		width:100%;
+		padding-left:0;
+	}	
+	
+	/*Планшет версия*/
+	#top-menu
+	{
+		display:none;
+	}
+	.top-mmenu
+	{		
+		display:none;
+	}
+	.top-tabmenu
+	{
+		display:block;
+	}
+	.container-phone
+	{
+		padding-left:0 !important;
+		padding-right:0 !important;
+	}
+	
+	.row-desktop
+	{
+		display:none;
+	}
+	.row-mobile
+	{
+		display:block;
+	}
+	.row-mobile-menu-search-cart
+	{
+		display:none;
+	}
+	.row-tablet-menu-search-cart
+	{
+		display:block;		
+	}
+	
+	#header
+	{
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;	
+	}
+
+    .popup-foo {
+        display:none;
+    }
+	/*Планшет версия конец*/
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) 
+{
+	.search-header
+	{
+		display:none;
+	}
+	header .top-button
+	{
+		display:none;
+	}
+	#btnSearchHeader
+	{
+		display:none;
+	}
+	#tbSearchHeader
+	{
+		width:100%;
+	}
+	.header-search
+	{
+		width:100%;
+		padding-left:0;
+	}
+	.item-top-menu-flex img
+	{
+		height:50px;
+	}
+	
+	/*Мобильная версия*/
+	.row-desktop
+	{
+		display:none;
+	}
+	.row-mobile
+	{
+		display:block;
+	}
+	.next_button, .prev_button
+	{
+		top: 10%;
+		background-color:Transparent;
+	}
+	
+	#top-menu
+	{
+		display:none;
+	}
+	.top-mmenu
+	{
+		/*display:flex;*/
+		display:block;
+	}
+	.top-tabmenu
+	{
+		display:none;
+	}
+	.container-phone
+	{
+		padding-left:0 !important;
+		padding-right:0 !important;
+	}
+	.row-tablet-menu-search-cart
+	{
+		display:none;
+	}
+	
+	.catalog-item
+	{
+		width:140px;
+		height:375px;
+	}
+	.catalog-img, .catalog-img img
+	{
+		width:120px !important;
+		height:120px !important;
+	}
+	.catalog-name a
+	{
+		font-size: 7pt;
+	}
+	.discl-cart
+	{
+		font-size:7pt;
+	}
+	.count-cart
+	{
+		margin-left:5px;
+	}
+	.fav-cart
+	{
+		margin-left:10px;
+	}
+	.catalog-item .catalog-add img
+	{
+		width:120px;
+	}
+	/*Мобильная версия конец*/
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {	
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	.top_links {
+		display: inline-block !important;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}

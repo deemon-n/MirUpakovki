@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="html" />
+
+  <xsl:param name="appPath" />
+  <xsl:param name="categoryName" />
+
+  <xsl:template match="/List">
+
+    <xsl:for-each select="//Product">
+
+      <div class="">
+        <div class="catalog-item catalog-item-nmb">
+          <div class="catalog-img">
+            <a href="{$appPath}/catalog/item.aspx?pid={@ID}">
+              <img style="width:180px;"  src="{@ImageUrl}" alt="{@Name}" />
+            </a>
+          </div>
+          <div class="catalog-name">
+            <a href="{$appPath}/catalog/item.aspx?pid={@ID}">
+              <xsl:value-of select="@Name"/>
+            </a>
+          </div>
+          <!--<div class="catalog-manufact">Brauberg</div>-->
+          <div class="catalog-price">
+            
+            <xsl:if test="@Favorite = 'False'">
+              <div class="fav-cart fav-item" pid="{@ID}">
+                  <img src="{$appPath}/ii/fav_cart.png" alt="" />
+              </div>
+            </xsl:if>
+            <xsl:if test="@Favorite = 'True'">
+              <div class="fav-cart fav-item favorite" pid="{@ID}">
+                <img src="{$appPath}/ii/fav_cart_fill.png" alt="" />
+              </div>
+            </xsl:if>
+            
+            <div class="count-cart">
+              <input type="text" class="count count-input" value="1" />
+              <!--<div class="count">1</div>-->
+              <div class="plus-count">
+                <img src="{$appPath}/ii/plus.png" alt="" />
+              </div>
+              <div class="minus-count">
+                <img src="{$appPath}/ii/minus.png" alt="" />
+              </div>
+            </div>
+            <div class="price-cart">
+              <xsl:value-of select="@PriceString"/>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="catalog-add">
+            <a href="javascript:void(0);" class="add-item" pid="{@ID}">
+              <img src="{$appPath}/ii/add_cart.png" alt="" />
+            </a>
+          </div>
+          <!--<div class="discl-cart">
+            Цена может быть снижена в зависимости от объема покупки
+          </div>-->
+        </div>
+      </div>
+
+    </xsl:for-each>
+
+  </xsl:template>
+
+</xsl:stylesheet>
