@@ -56,12 +56,20 @@ namespace MirUpak.Model
         }
 
 
-        [Member("Url"), MaximumLength(128), UiTitle("Ссылка для перехода при клике"), UiLocation(Location.Both), UiDescription("Переход на главную, если не заполнено")]
+        [Member("Url"), MaximumLength(128), UiTitle("Ссылка для перехода при клике"), UiLocation(Location.Both)]
         string url = String.Empty;
         public string Url
         {
             get { return url; }
             set { url = value; }
+        }
+
+        [Member("NumberTransitions"), UiTitle("Количество переходов с баннера"), UiLocation(Location.Both), UiReadOnly, UiDescription("Если была установлена ссылка для перехода")]
+        protected int numberTransitions = 0;
+        public int NumberTransitions
+        {
+            get { return numberTransitions; }
+            set { numberTransitions = value; }
         }
 
         [EntityMember("Image"), MaximumLength(2048)]

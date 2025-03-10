@@ -39,10 +39,10 @@ public partial class catalog_index : UserWintrol, INavigable
 
             List<Product> lpsItem = new List<Product>();
             List<Product> _lpsItem = new List<Product>();
-            if (cat.ChildCategories.Count > 0)
+            if (cat.ChildCategoriesActive.Count > 0)
             {
                 /*Закомментировать для вывода подкатегорий*/
-                lpcs = cat.ChildCategories;
+                lpcs = cat.ChildCategoriesActive;
                 foreach (ProductCategory pcat in lpcs)
                 {
                     lpsItem = pcat.Products;
@@ -50,9 +50,9 @@ public partial class catalog_index : UserWintrol, INavigable
                     {
                         lpsAll.Add(product);
                     }
-                    if (pcat.ChildCategories.Count > 0)
+                    if (pcat.ChildCategoriesActive.Count > 0)
                     {
-                        foreach (ProductCategory _pcat in pcat.ChildCategories)
+                        foreach (ProductCategory _pcat in pcat.ChildCategoriesActive)
                         {
                             _lpsItem = _pcat.Products;
                             foreach (Product _product in _lpsItem)
@@ -87,12 +87,12 @@ public partial class catalog_index : UserWintrol, INavigable
         }
         else
         {
-            xlvChildCategory.List = ProductCategory.RootCategories;
+            xlvChildCategory.List = ProductCategory.RootCategoriesActive;
         }
 
         Env.CurrentLayout.ContentTitle = cname;
 
-        foreach (ProductCategory pc in ProductCategory.RootCategories)
+        foreach (ProductCategory pc in ProductCategory.RootCategoriesActive)
         { 
             ddlCat.Items.Add(new ListItem(pc.Name,pc.ID.ToString()));
         }
@@ -256,10 +256,10 @@ public partial class catalog_index : UserWintrol, INavigable
         if (Int32.TryParse(cidDDLCat, out cidDDLCatInt))
         {
             ProductCategory pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
-            if (pcCurr.ChildCategories.Count > 0)
+            if (pcCurr.ChildCategoriesActive.Count > 0)
             {
                 ddlCatChild.Items.Add(new ListItem("Выберите подкатегорию раздела", "Выберите подкатегорию раздела"));
-                foreach (ProductCategory pcc in pcCurr.ChildCategories)
+                foreach (ProductCategory pcc in pcCurr.ChildCategoriesActive)
                 {
                     ddlCatChild.Items.Add(new ListItem(pcc.Name, pcc.ID.ToString()));
                 }
@@ -317,10 +317,10 @@ public partial class catalog_index : UserWintrol, INavigable
         {
             cidDDLCatInt = cat.ID;
             ProductCategory pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
-            if (pcCurr.ChildCategories.Count > 0)
+            if (pcCurr.ChildCategoriesActive.Count > 0)
             {
                 ddlCatChild.Items.Add(new ListItem("Выберите подкатегорию раздела", "Выберите подкатегорию раздела"));
-                List<ProductCategory> _lpc = pcCurr.ChildCategories;
+                List<ProductCategory> _lpc = pcCurr.ChildCategoriesActive;
                 _lpc.Sort(CompareByName);
                 foreach (ProductCategory pcc in _lpc)
                 {
@@ -333,7 +333,7 @@ public partial class catalog_index : UserWintrol, INavigable
         catch
         {
             ddlCatChild.Items.Add(new ListItem("Выберите раздел", "Выберите раздел"));
-            foreach (ProductCategory pcc in ProductCategory.RootCategories)
+            foreach (ProductCategory pcc in ProductCategory.RootCategoriesActive)
             {
                 ddlCatChild.Items.Add(new ListItem(pcc.Name, pcc.ID.ToString()));
             }
@@ -348,10 +348,10 @@ public partial class catalog_index : UserWintrol, INavigable
         {
             cidDDLCatInt = cat.ID;
             ProductCategory pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
-            if (pcCurr.ChildCategories.Count > 0)
+            if (pcCurr.ChildCategoriesActive.Count > 0)
             {
                 ddlCatChildChild.Items.Add(new ListItem("Выберите подкатегорию раздела", "Выберите подкатегорию раздела"));
-                List<ProductCategory> _lpc = pcCurr.ChildCategories;
+                List<ProductCategory> _lpc = pcCurr.ChildCategoriesActive;
                 _lpc.Sort(CompareByName);
                 foreach (ProductCategory pcc in _lpc)
                 {
@@ -364,7 +364,7 @@ public partial class catalog_index : UserWintrol, INavigable
         catch
         {
             ddlCatChildChild.Items.Add(new ListItem("Выберите раздел", "Выберите раздел"));
-            foreach (ProductCategory pcc in ProductCategory.RootCategories)
+            foreach (ProductCategory pcc in ProductCategory.RootCategoriesActive)
             {
                 ddlCatChildChild.Items.Add(new ListItem(pcc.Name, pcc.ID.ToString()));
             }
@@ -380,10 +380,10 @@ public partial class catalog_index : UserWintrol, INavigable
         {
             cidDDLCatInt = cat.ID;
             ProductCategory pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
-            if (pcCurr.ChildCategories.Count > 0)
+            if (pcCurr.ChildCategoriesActive.Count > 0)
             {
                 ddlCatChildChild.Items.Add(new ListItem("Выберите подкатегорию раздела", "Выберите подкатегорию раздела"));
-                List<ProductCategory> _lpc = pcCurr.ChildCategories;
+                List<ProductCategory> _lpc = pcCurr.ChildCategoriesActive;
                 _lpc.Sort(CompareByName);
                 foreach (ProductCategory pcc in _lpc)
                 {
@@ -396,10 +396,10 @@ public partial class catalog_index : UserWintrol, INavigable
 
             cidDDLCatInt = cat.ParentCategory.ID;
             pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
-            if (pcCurr.ChildCategories.Count > 0)
+            if (pcCurr.ChildCategoriesActive.Count > 0)
             {
                 ddlCatChild.Items.Add(new ListItem("Выберите подкатегорию раздела", "Выберите подкатегорию раздела"));
-                List<ProductCategory> _lpc = pcCurr.ChildCategories;
+                List<ProductCategory> _lpc = pcCurr.ChildCategoriesActive;
                 _lpc.Sort(CompareByName);
                 foreach (ProductCategory pcc in _lpc)
                 {
@@ -451,7 +451,7 @@ public partial class catalog_index : UserWintrol, INavigable
             {
                 case 1:
                     ddlCatChild.Items.Add(new ListItem("Выберите подкатегорию раздела", "Выберите подкатегорию раздела"));
-                    _lpc = pcCurr.ChildCategories;
+                    _lpc = pcCurr.ChildCategoriesActive;
                     _lpc.Sort(CompareByName);
                     foreach (ProductCategory pcc in _lpc)
                     {
@@ -462,7 +462,7 @@ public partial class catalog_index : UserWintrol, INavigable
 
                 case 2:
                     ddlCatChild.Items.Add(new ListItem("Выберите подкатегорию раздела", "Выберите подкатегорию раздела"));
-                    _lpc = pcCurr.ParentCategory.ChildCategories;
+                    _lpc = pcCurr.ParentCategory.ChildCategoriesActive;
                     _lpc.Sort(CompareByName);
                     foreach (ProductCategory pcc in _lpc)
                     {
@@ -471,7 +471,7 @@ public partial class catalog_index : UserWintrol, INavigable
 
                     cidDDLCatInt = cat.ID;
                     pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
-                    _lpc = pcCurr.ChildCategories;
+                    _lpc = pcCurr.ChildCategoriesActive;
                     if (_lpc.Count == 0)
                         ddlCatChildChild.Items.Add(new ListItem("нет подкатегорий раздела", "-1"));
                     else
@@ -494,7 +494,7 @@ public partial class catalog_index : UserWintrol, INavigable
 
                 case 3:
                     ddlCatChild.Items.Add(new ListItem("Выберите подкатегорию раздела", "Выберите подкатегорию раздела"));
-                    _lpc = pcCurr.ParentCategory.ParentCategory.ChildCategories;
+                    _lpc = pcCurr.ParentCategory.ParentCategory.ChildCategoriesActive;
                     _lpc.Sort(CompareByName);
                     foreach (ProductCategory pcc in _lpc)
                     {
@@ -512,7 +512,7 @@ public partial class catalog_index : UserWintrol, INavigable
 
                     cidDDLCatInt = cat.ParentCategoryID;
                     pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
-                    _lpc = pcCurr.ChildCategories;
+                    _lpc = pcCurr.ChildCategoriesActive;
                     if (_lpc.Count == 0)
                         ddlCatChildChild.Items.Add(new ListItem("нет подкатегорий раздела", "-1"));
                     else
@@ -541,7 +541,7 @@ public partial class catalog_index : UserWintrol, INavigable
         catch
         {
             ddlCatChild.Items.Add(new ListItem("Выберите раздел", "Выберите раздел"));
-            foreach (ProductCategory pcc in ProductCategory.RootCategories)
+            foreach (ProductCategory pcc in ProductCategory.RootCategoriesActive)
             {
                 ddlCatChild.Items.Add(new ListItem(pcc.Name, pcc.ID.ToString()));
             }

@@ -17,11 +17,11 @@
 	<%--<meta name="viewport" content="width=1140">--%>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <%--<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">--%>
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -43,7 +43,7 @@
     
     <link rel="stylesheet" href="<%=AppPath %>/js/owl-carousel/owl.carousel.css" />
     <link rel="stylesheet" href="<%=AppPath %>/css/fonts.css?v=1.1" />
-    <link rel="stylesheet" href="<%=AppPath %>/css/mu2.css?v=1.57" />
+    <link rel="stylesheet" href="<%=AppPath %>/css/mu2.css?v=1.63" />
     <link rel="stylesheet" href="<%=AppPath %>/css/media.css?v=1.14" />
 
 <body>
@@ -106,9 +106,10 @@
         <div class="item-right-menu rm6"><a href="<%=AppPath %>/contacts/">Контакты</a></div>
         <div class="item-right-menu rm7"><a href="<%=AppPath %>/help/">Помощь</a></div>
         <div class="item-right-menu rm8"><a href="<%=AppPath %>/delivery/">Доставка</a></div>
-        <div class="item-right-menu rm9"><a href="<%=AppPath %>/about/job/">Вакансии</a></div>
+        <%--<div class="item-right-menu rm9"><a href="<%=AppPath %>/about/job/">Вакансии</a></div>--%>
         <div class="item-right-menu rm10"><a href="<%=AppPath %>/about/assortment.aspx">Ассортимент</a></div>
         <div class="item-right-menu rm11"><a href="<%=AppPath %>/about/portfolio.aspx">Портфолио</a></div>
+        <div class="item-right-menu rm13"><a href="<%=AppPath %>/partners-order/">Заказать канцтовары через партнеров</a></div>
     </div>
 
 </div>
@@ -141,14 +142,14 @@
             <div class="header-menu">
                 <span class="plink nav-item" data-role="sidebarTrigger"><span class="nav-hamburgerIcon"></span></span>
             </div>
-            <div class="header-logo"><a href="<%=AppPath %>/index.aspx"><img src="<%=AppPath %>/ii/logo.jpg" alt="Мир упаковки" /></a></div>
+            <div class="header-logo"><a href="<%=AppPath %>/index.aspx"><img src="<%=AppPath %>/ii/logo2.jpg" alt="Мир упаковки" /></a></div>
             <div class="header-search">
                 <asp:TextBox ID="tbSearchHeader" CssClass="btnSearchHeader" runat="server" Text="поиск товара"></asp:TextBox><asp:Button ID="btnSearchHeader" runat="server" OnClick="btnSearchHeader_Click" CssClass="btnSearchHeader" Text="ПОИСК" />
             </div>            
          </div>
          <div class="col-md-4">
              <div class="header-phone">
-                <div class="gilroy-font">8 (4942) 440-888</div>
+                <div class="gilroy-font">+7 (4942) 440-888</div>
                 <div><a class="header_recall" href="javascript:recall_header();">Заказать обратный звонок</a></div>
              </div>
              <div class="header-cart">
@@ -166,11 +167,11 @@
         <div class="row row-mobile">
             <div class="col-xs-6">
                 <div class="m-logo">
-                <a href="<%=AppPath %>/index.aspx"><img src="<%=AppPath %>/ii/logo.jpg" alt="Мир упаковки" /></a>
+                <a href="<%=AppPath %>/index.aspx"><img src="<%=AppPath %>/ii/logo2.jpg" alt="Мир упаковки" /></a>
                 </div>
             </div>
             <div class="col-xs-6">                
-                <div class="m-gilroy-font">8 (4942) 440-888</div>
+                <div class="m-gilroy-font">+7 (4942) 440-888</div>
                 <div class="m-recall"><a class="m-header_recall" href="javascript:recall_header();">заказать звонок</a></div>
             </div>
         </div>
@@ -226,15 +227,16 @@
             <div class="col-md-12">
             <div class="menu-sub-header-flex">
                 <div class="item-mnu"><a href="<%=AppPath %>/catalog/cart.aspx"><img src="<%=AppPath %>/ii/rm2.png" alt="Корзина" /> Корзина</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/my/"><img src="<%=AppPath %>/ii/rm3.png" alt="Корзина" /> Личный кабинет</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/about/"><img src="<%=AppPath %>/ii/rm4.png" alt="Корзина" /> О компании</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/news/"><img src="<%=AppPath %>/ii/rm5.png" alt="Корзина" /> Новости</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/contacts/"><img src="<%=AppPath %>/ii/rm6.png" alt="Корзина" /> Контакты</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/help/"><img src="<%=AppPath %>/ii/rm7.png" alt="Корзина" /> Помощь</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/delivery/"><img src="<%=AppPath %>/ii/rm8.png" alt="Корзина" /> Доставка</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/about/job/"><img src="<%=AppPath %>/ii/rm9.png" alt="Корзина" /> Вакансии</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/about/assortment.aspx"><img src="<%=AppPath %>/ii/rm10.png" alt="Корзина" /> Ассортимент</a></div>
-                <div class="item-mnu"><a href="<%=AppPath %>/about/portfolio.aspx"><img src="<%=AppPath %>/ii/rm11.png" alt="Корзина" /> Портфолио</a></div>
+                <div class="item-mnu"><a href="<%=AppPath %>/my/"><img src="<%=AppPath %>/ii/rm3.png" alt="Личный кабинет" /> Личный кабинет</a></div>
+                <div class="item-mnu"><a href="<%=AppPath %>/about/"><img src="<%=AppPath %>/ii/rm4.png" alt="О компании" /> О компании</a></div>
+                <div class="item-mnu"><a href="<%=AppPath %>/news/"><img src="<%=AppPath %>/ii/rm5.png" alt="Новости" /> Новости</a></div>
+                <div class="item-mnu"><a href="<%=AppPath %>/contacts/"><img src="<%=AppPath %>/ii/rm6.png" alt="Контакты" /> Контакты</a></div>
+                <div class="item-mnu"><a href="<%=AppPath %>/help/"><img src="<%=AppPath %>/ii/rm7.png" alt="Помощь" /> Помощь</a></div>
+                <div class="item-mnu"><a href="<%=AppPath %>/delivery/"><img src="<%=AppPath %>/ii/rm8.png" alt="Доставка" /> Доставка</a></div>
+                <%--<div class="item-mnu"><a href="<%=AppPath %>/about/job/"><img src="<%=AppPath %>/ii/rm9.png" alt="Вакансии" /> Вакансии</a></div>--%>
+                <div class="item-mnu"><a href="<%=AppPath %>/about/assortment.aspx"><img src="<%=AppPath %>/ii/rm10.png" alt="Ассортимент" /> Ассортимент</a></div>
+                <div class="item-mnu"><a href="<%=AppPath %>/about/portfolio.aspx"><img src="<%=AppPath %>/ii/rm11.png" alt="Портфолио" /> Портфолио</a></div>
+                <div class="item-mnu"><a href="<%=AppPath %>/partners-order/"><img src="<%=AppPath %>/ii/rm14.png" alt="Заказать канцтовары через партнеров" /> Заказать канцтовары через партнеров</a></div>
                 </div>
             </div>         
             </div>
@@ -488,17 +490,17 @@
             <div><a href="<%=AppPath %>/policy/">Политика в отношении обработки персональных данных</a></div>
             <div><a href="<%=AppPath %>/delivery/">Логистика</a></div>
         </div>
-        <div class="col-md-3">
-            <div><a href="<%=AppPath %>/about/black/">Черный список</a></div>
+        <div class="col-md-3">            
             <div><a href="<%=AppPath %>/ved/">ВЭД</a></div>
             <div><a href="<%=AppPath %>/potential/">Потенциальным поставщикам</a></div>
-            <div><a href="<%=AppPath %>/about/job/">Вакансии</a></div>
+            <%--<div><a href="<%=AppPath %>/about/job/">Вакансии</a></div>--%>
             <div><a href="<%=AppPath %>/news/">Новости</a></div>
             <div><a href="<%=AppPath %>/contacts/">Контакты</a></div>
             <div><a href="<%=AppPath %>/my/">Личный кабинет</a></div>
         </div>
         <div class="col-md-3">
-            <div><a href="<%=AppPath %>/catalog/1/">Товары для офиса</a></div>
+            <asp:Literal ID="ltFooCatalogRoot" EnableViewState="false" runat="server" />
+            <%--<div><a href="<%=AppPath %>/catalog/1/">Товары для офиса</a></div>
             <div><a href="<%=AppPath %>/catalog/2/">Бумага офисная</a></div>
             <div><a href="<%=AppPath %>/catalog/3/">Бытовая химия</a></div>
             <div><a href="<%=AppPath %>/catalog/4/">Товары для школы</a></div>
@@ -507,16 +509,16 @@
             <div><a href="<%=AppPath %>/catalog/7/">Промышленная упаковка</a></div>
             <div><a href="<%=AppPath %>/catalog/8/">Товары для дома и отдыха</a></div>
             <div><a href="<%=AppPath %>/catalog/9/">Сезонные товары</a></div>
-            <div><a href="<%=AppPath %>/catalog/10/">Упаковка для пищевых производств</a></div>
+            <div><a href="<%=AppPath %>/catalog/10/">Упаковка для пищевых производств</a></div>--%>
         </div>
         <div class="col-md-3">
             <div class="titlefooter">Подпишитесь на соц. сети</div>
             <div class="social-footer">                
                 <a target="_blank" href="https://vk.com/mir.upakovki"><img src="<%=AppPath %>/ii/vk_green.jpg" alt="vk" /></a>
-                <a target="_blank" href="https://www.instagram.com/mir_upakovki/"><img src="<%=AppPath %>/ii/insta_green.jpg" alt="insta" /></a>
+                <%--<a target="_blank" href="https://www.instagram.com/mir_upakovki/"><img src="<%=AppPath %>/ii/insta_green.jpg" alt="insta" /></a>--%>
             </div>
             <div class="titlefooter gray gilroy-font">
-                2017 Группа компаний "Мир Упаковки"<br />
+                2017 Компания "Мир Упаковки"<br />
                 156009, г. Кострома, ул. Юбилейная, 24<br />
                 Тел.: +7 (4942) 440-888
             </div>  
@@ -556,7 +558,7 @@
     <script type="text/javascript" src="<%=AppPath %>/js/maskedinput.js"></script>
     <%--ScrollUp--%>
     <link rel="stylesheet" href="<%=AppPath %>/js/ScrollUp/css/themes/image.css">			
-    <script type="text/javascript" src="<%=AppPath %>/js/ScrollUp/lib/jquery.easing.min.js"></script>
+    <%--<script type="text/javascript" src="<%=AppPath %>/js/ScrollUp/lib/jquery.easing.min.js"></script>--%>
     <script type="text/javascript" src="<%=AppPath %>/js/ScrollUp/src/jquery.scrollUp.js"></script>
     <script type="text/javascript" src="<%=AppPath %>/js/ScrollUp/initial.js"></script>
     <%--ScrollUp END--%>   
@@ -586,7 +588,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="<%=AppPath %>/js/slick/slick.min.js"></script>
 	
-	<script src="<%=AppPath %>/js/common.js?v=1.39"></script>
+	<script src="<%=AppPath %>/js/common.js?v=1.43"></script>
 	
 <%--Товар добавлен в корзину--%>	
 <div class="wrapper_popup cart_done text-center">
@@ -669,7 +671,8 @@
 </div>
 
 <asp:PlaceHolder ID="phPopupFoo" EnableViewState="false" Visible="false" runat="server">
-<div class="popup-foo <%--show-popup-foo--%>">
+<%--show-popup-foo--%>
+<%--<div class="popup-foo">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -687,7 +690,10 @@
             </div>
         </div>
     </div>
-</div>
+</div>--%>
+<!--Start of UniSender PopUp Form script--> 
+<script type="text/javascript" src="//popup-static.unisender.com/service/loader.js?c=146905" id="unisender-popup-forms"></script> 
+<!--End of UniSender PopUp Form script--> 
 </asp:PlaceHolder>
 
 </form>
@@ -723,9 +729,17 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/46567563" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<!-- BEGIN JIVOSITE CODE {literal} -->
+<!-- BEGIN JIVOSITE CODE {literal}
 <script type='text/javascript'> (function(){ var widget_id = 'gx7Y3Dlapb';var d=document;var w=window;function l(){var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
 </script>
-<!-- {/literal} END JIVOSITE CODE -->
+{/literal} END JIVOSITE CODE -->
+
+<script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn-ru.bitrix24.ru/b7708579/crm/site_button/loader_2_1jrbod.js');
+</script>
+
 </body>
 </html>

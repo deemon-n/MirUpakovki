@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using Ideal.Entity;
 using MirUpak.Model;
 using Ideal.Wision.Identity;
+using System.Text;
 
 public partial class layouts_Main2 : Layout
 {
@@ -25,6 +26,15 @@ public partial class layouts_Main2 : Layout
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        if (!Request.IsLocal)
+        {
+            if (!Request.Url.Host.Equals("mirupakovki.com", StringComparison.CurrentCultureIgnoreCase) ||
+                 !Request.Url.Scheme.Equals("https", StringComparison.CurrentCultureIgnoreCase) || Request.Url.Scheme.Equals("www", StringComparison.CurrentCultureIgnoreCase))
+            {
+                Env.Redirect("https://mirupakovki.com" + Env.RawUrl);
+            }
+        }
+
         /*MirUpak.Model.Commerce.Initialize();
         Ideal.Commerce.Cart cart = MirUpak.Model.Commerce.Engine.CurrentCart;*/
         if (!comminit)
@@ -38,14 +48,19 @@ public partial class layouts_Main2 : Layout
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        string spid = Env.Request["pid"];
+        if (Env.RawUrl.Contains("/catalog/item.aspx?pid=" + spid))
+            Env.Redirect(prod.UrlPath);
+
         if ( Env.RawUrl.Contains("/catalog/") && !Env.RawUrl.Contains("/catalog/cart.aspx") )
-        {
+        {            
             ProductCategory parentCategory = new ProductCategory();
             ProductCategory currentCategory = new ProductCategory();
             Product product = new Product();
             int id = 0;
             string sid = Env.WisionContext.GetRxKeyValue("cid");
-            string spid = Env.Request["pid"];
+            //string spid = Env.Request["pid"];
+            spid = Env.WisionContext.GetRxKeyValue("pid");
 
             if (sid != null)
             {
@@ -54,6 +69,9 @@ public partial class layouts_Main2 : Layout
                     cat = MirUpak.Model.Schema.Categories[id];
                     if (null != cat)
                     {
+                        if (Env.RawUrl.Contains("/catalog/" + sid))
+                            Env.Redirect(cat.UrlPath);
+
                         parentCategory = cat;
                         currentCategory = cat;
                         phSubHeaderCatalog.Visible = true;
@@ -82,7 +100,7 @@ public partial class layouts_Main2 : Layout
                 {
                     prod = MirUpak.Model.Schema.Products[id];
                     if (null != prod)
-                    {
+                    {                        
                         parentCategory = prod.Category;
                         currentCategory = prod.Category;
                         phSubHeaderCatalog.Visible = true;
@@ -109,7 +127,7 @@ public partial class layouts_Main2 : Layout
             phPopupFoo.Visible = true;
         }
 
-            tbSearchHeader.Attributes.Add("onblur", "if (this.value=='') this.value='поиск товара'");
+        tbSearchHeader.Attributes.Add("onblur", "if (this.value=='') this.value='поиск товара'");
         tbSearchHeader.Attributes.Add("onfocus", "if (this.value=='поиск товара') this.value='';");
 
         tbMSearchHeader.Attributes.Add("onblur", "if (this.value=='') this.value='поиск товара'");
@@ -120,7 +138,18 @@ public partial class layouts_Main2 : Layout
         tbTabletSearchHeader.Attributes.Add("onfocus", "if (this.value=='поиск товара') this.value='';");   
         
         imgBtnMHeader.ImageUrl = Env.AppPath + "/ii/m-header.png";
-        imgBtnTabletHeader.ImageUrl = Env.AppPath + "/ii/m-header.png";        
+        imgBtnTabletHeader.ImageUrl = Env.AppPath + "/ii/m-header.png";
+
+        List<ProductCategory> lpc = ProductCategory.RootCategoriesActive;
+        if (lpc.Count > 0)
+        {
+            StringBuilder sbPC = new StringBuilder();
+            foreach (ProductCategory pc in lpc)
+            {
+                sbPC.AppendFormat(@"<div><a href=""{3}"">{2}</a></div>", Env.AppPath, pc.ID.ToString(), pc.Name, pc.UrlPath);
+            }
+            ltFooCatalogRoot.Text = sbPC.ToString();
+        }
     }
 
     protected void btnSearchHeader_Click(object sender, EventArgs e)

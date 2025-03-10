@@ -13,12 +13,12 @@
       <div class="">
         <div class="catalog-item catalog-item-nmb">
           <div class="catalog-img">
-            <a href="{$appPath}/catalog/item.aspx?pid={@ID}">
+            <a href="{@UrlPath}">
               <img style="width:180px;"  src="{@ImageUrl}" alt="{@Name}" />
             </a>
           </div>
           <div class="catalog-name">
-            <a href="{$appPath}/catalog/item.aspx?pid={@ID}">
+            <a href="{@UrlPath}">
               <xsl:value-of select="@Name"/>
             </a>
           </div>

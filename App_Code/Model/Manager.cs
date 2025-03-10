@@ -52,7 +52,7 @@ namespace MirUpak.Model
         
         [EntityMember("Photo"), MaximumLength(1024)]
         protected string photo = string.Empty;
-        [UiMember, UiTitle("Фото"), ImageLocation("~/i/mgr/"), ImagePreview(61,61), ImageResize(-500), XmlMember]
+        [UiMember, UiTitle("Фото"), ImageLocation("~/i/mgr/"), ImagePreview(120,120), ImageResize(-500), XmlMember]
         public ImageInfo Photo
         {
             get { return new ImageInfo(this.photo); }

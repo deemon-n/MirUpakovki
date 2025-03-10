@@ -61,7 +61,7 @@ namespace MirUpak.Model
         [Member, UiTitle("Название"), MaximumLength(128), UiLocation(Location.Both)]
         public string Name;
 
-        [Member, UiTitle("Email"), MaximumLength(128)]
+        [Member, UiTitle("Email"), MaximumLength(128), UiLocation(Location.Both)]
         public string Email;
 
         [Member, UiTitle("Телефон"), MaximumLength(64)]

@@ -17,6 +17,7 @@ public partial class job_index : UserWintrol
     protected void Page_Load(object sender, EventArgs e)
     {
         Env.CurrentLayout.ContentTitle = "Вакансии";
+        Env.PageNotFound();
     }
 
     protected void btnSend_Click(object sender, EventArgs e)

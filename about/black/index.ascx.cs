@@ -15,6 +15,7 @@ public partial class about_black_index : UserWintrol
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Env.Redirect("https://mirupakovki.com");
         Env.CurrentLayout.ContentTitle = "Черный список";
     }
 }

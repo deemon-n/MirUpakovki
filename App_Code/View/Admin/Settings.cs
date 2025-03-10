@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace BravoStar
 {
-    [AdminWintrol("{EF488E8B-0C6A-4283-85EE-D46538EE988B}", typeof(MuAdminGroup), "Настройки сайта", "Управление настройками сайта")]
+    [AdminWintrol("{EF488E8B-0C6A-4283-85EE-D46538EE988B}", typeof(MuAdminGroup), "Настройки сайта", "Управление настройками сайта", AdminWintrolState.Hidden)]
     public class Settings : Wintrol
     {
         Button btnSave = null;

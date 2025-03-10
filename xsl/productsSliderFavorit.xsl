@@ -16,12 +16,12 @@
             <img src="{$appPath}/ii/del_fav_new.png" alt="удалить" />
           </div>
           <div class="catalog-img">
-            <a href="{$appPath}/catalog/item.aspx?pid={@ID}">
+            <a href="{@UrlPath}">
               <img style="width:180px;"  src="{@ImageUrl}" alt="{@Name}" />
             </a>
           </div>
           <div class="catalog-name">
-            <a href="{$appPath}/catalog/item.aspx?pid={@ID}">
+            <a href="{@UrlPath}">
               <xsl:value-of select="@Name"/>
             </a>
           </div>

@@ -783,9 +783,13 @@ h1.main-title
 	border:0px black solid;
 }
 
-.header-logo
-{
-	float:left;
+.header-logo {
+    float: left;
+    height: 65px;
+    line-height: 65px;
+}
+.header-logo img{
+    /*max-width: 210px;*/
 }
 .header-search
 {
@@ -1233,6 +1237,13 @@ border-right:2px #fff solid;
 
         .item-right-menu.rm12:hover {
             background: url('../ii/rm12.png') no-repeat 265px 5px #77b181;
+        }
+    .item-right-menu.rm13 {
+        background: url('../ii/rm14.png') no-repeat 265px 15px;
+    }
+
+        .item-right-menu.rm13:hover {
+            background: url('../ii/rm14.png') no-repeat 265px 15px #77b181;
         }
 
 .catalog-price
@@ -2460,3 +2471,11 @@ a
     font-size:12pt;
     font-weight:bold;
 }
+
+.wrapper_popup.block-manager {
+    width: 100% !important;
+    max-width: 320px !important;
+}
+    .wrapper_popup.block-manager label {
+        font-size:10.5pt;
+    }

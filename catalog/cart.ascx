@@ -116,8 +116,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-cart-item">
-                            <div class="title">Организация<sup class="red">*</sup></div>
-                            <div class="input"><asp:TextBox CssClass="finish_order_cont" ID="tbOrgan" runat="server"></asp:TextBox> <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="tbOrgan"></asp:RequiredFieldValidator></div>
+                            <div class="title">Организация</div>
+                            <div class="input"><asp:TextBox ID="tbOrgan" runat="server"></asp:TextBox></div>
                         </div>
                     </div>
                     <div class="col-md-6">

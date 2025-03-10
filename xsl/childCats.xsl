@@ -14,12 +14,12 @@
         <div class="col-xs-6 col-sm-4 col-md-3">
           <div class="catalog-item category">
             <div class="catalog-img">
-              <a href="{$appPath}/catalog/{@ID}/" title="{@Name}">
+              <a href="{@UrlPath}" title="{@Name}">
                 <img src="{@ImageUrl}" style="width:180px; height:180px;"  alt="{@Name}" />
               </a>
             </div>
             <div class="catalog-name">
-              <a href="{$appPath}/catalog/{@ID}/" title="{@Name}">
+              <a href="{@UrlPath}" title="{@Name}">
                 <xsl:value-of select="@Name"/>
               </a>
             </div>

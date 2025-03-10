@@ -270,7 +270,7 @@ var modal_options_succes = {
     if ($(".finish_order_cont").length)
     {
         var foc = $(".finish_order_cont");
-        var foc_count = 4; // кол-во проверяемых полей        
+        var foc_count = 3; // кол-во проверяемых полей        
         foc.keyup(function() {
             var foc_yes_count = 0;
             foc.each(function(index) {
@@ -681,8 +681,25 @@ var modal_options_succes = {
         }
     });
     //popup-catalog КОНЕЦ
-     
-        
+
+    $(".indexslider").click(function () {
+        var id = $(this).attr("ix");
+        if ($(this).hasClass("yep")) {
+            $.ajax({
+                async: true,
+                cache: false,
+                dataType: 'html',
+                reload: false,
+                getData: 'data-ajax',
+                setContent: true,
+                spinner: false,
+                url: "/numbertransitions.ashx?id=" + id,
+                success: function (data) {                    
+                }
+            });
+        }
+    });
+
 });//READY END
 
 function catalogOffice()

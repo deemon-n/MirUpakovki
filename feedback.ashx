@@ -32,7 +32,7 @@ public class feedback : IHttpHandler
             string infocomplaint = context.Request["infocomplaint"];
 
             string subject = "Сообщение с сайта Мир упаковки. Жалобы и предложения";
-            string from = "Сообщение с сайта Мир упаковки. Жалобы и предложения";
+            //string from = "Сообщение с сайта Мир упаковки. Жалобы и предложения";
             string message = "Фамилия: " + firstnamecomplaint + "\r\n";
             message += "Имя: " + lastnamecomplaint + "\r\n";
             message += "Телефон: " + phonecomplaint + "\r\n";
@@ -60,7 +60,7 @@ public class feedback : IHttpHandler
             string helpPhone = context.Request["helpPhone"];
 
             string subject = "Сообщение с сайта Мир упаковки. Заказать звонок";
-            string from = "Сообщение с сайта Мир упаковки. Заказать звонок";
+            //string from = "Сообщение с сайта Мир упаковки. Заказать звонок";
             string message = "Имя: " + helpName + "\r\n";
             message += "Телефон: " + helpPhone + "\r\n";
             message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
@@ -85,7 +85,7 @@ public class feedback : IHttpHandler
             string mailMail = context.Request["mailMail"];
 
             string subject = "Сообщение с сайта Мир упаковки. Подпишитесь на рассылку";
-            string from = "Сообщение с сайта Мир упаковки. Подпишитесь на рассылку";
+            //string from = "Сообщение с сайта Мир упаковки. Подпишитесь на рассылку";
             string message = "E-mail: " + mailMail + "\r\n";
             message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
             //Ideal.Core.Net.SmtpServer ssrv = new Ideal.Core.Net.SmtpServer("89.208.146.168");
@@ -108,7 +108,7 @@ public class feedback : IHttpHandler
             string mailMail = context.Request["mail"];
 
             string subject = "Сообщение с сайта Мир упаковки. Получайте уникальные предложения первыми";
-            string from = "Сообщение с сайта Мир упаковки. Получайте уникальные предложения первыми";
+            //string from = "Сообщение с сайта Мир упаковки. Получайте уникальные предложения первыми";
             string message = "E-mail: " + mailMail + "\r\n";
             message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
             //Ideal.Core.Net.SmtpServer ssrv = new Ideal.Core.Net.SmtpServer("89.208.146.168");
@@ -134,7 +134,7 @@ public class feedback : IHttpHandler
             string maildesign = context.Request["maildesign"];
 
             string subject = "Сообщение с сайта Мир упаковки. Портфолио. Заказать дизайн";
-            string from = "Сообщение с сайта Мир упаковки. Портфолио. Заказать дизайн";
+            //string from = "Сообщение с сайта Мир упаковки. Портфолио. Заказать дизайн";
             string message = "Фамилия: " + firstnamedesign + "\r\n";
             message += "Имя: " + lastnamedesign + "\r\n";
             message += "Телефон: " + phonedesign + "\r\n";

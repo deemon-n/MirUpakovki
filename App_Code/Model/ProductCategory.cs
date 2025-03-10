@@ -199,15 +199,17 @@ public class ProductCategory : Entity<int, ProductCategory>, INavigable
             if (this.Photo.Exists)
                 return String.Format(@"{0}/i/pc/{1}", Env.AppPath, this.Photo.LargeName);
             
-            return String.Format("{0}/ii/t.gif", Env.AppPath);
+            return String.Format("{0}/ii/nophoto.png", Env.AppPath);
         }
     }
 
+    [Member(typeof(XmlProperties))]
     public string UrlPath
     {
         get
         {
-            return String.Format("{0}/catalog/{1}/", Env.AppPath, this.ID);
+            //return String.Format("{0}/catalog/{1}/", Env.AppPath, this.ID);
+            return Env.AppPath + "/catalog/" + Text.TransliterateRuEn(this.Name) + "-" + this.id + "/";
         }
     }
 
@@ -225,6 +227,37 @@ public class ProductCategory : Entity<int, ProductCategory>, INavigable
         {
             return Schema.Categories.Select("ParentCategoryID = @1", new SelectOptions("OrderIndex", SortOrder.Ascending), this.ID).Items;
         }
+    }
+
+    public List<ProductCategory> ChildCategoriesActive
+    {
+        get
+        {
+            List<ProductCategory> lpc = Schema.Categories.Select("ParentCategoryID = @1 AND Active = @2", new SelectOptions("OrderIndex", SortOrder.Ascending), this.ID, true).Items;            
+
+            lpc = lpc.FindAll(catChecker); // не выводим пустые категории
+
+            return lpc;            
+        }
+    }
+
+    static bool catChecker(ProductCategory pc)
+    {
+        if (pc.Products.Count > 0)
+            return true;
+
+        bool yep = false;
+
+        foreach (ProductCategory _pc in pc.ChildCategories)
+        {
+            if (_pc.Products.Count > 0)
+            {
+                yep = true;
+                break;
+            }
+        }        
+
+        return yep;
     }
 
     public List<ProductCategory> NestedCategories
@@ -355,6 +388,14 @@ public class ProductCategory : Entity<int, ProductCategory>, INavigable
         get
         {
             return Schema.Categories.Select("ParentCategoryID = @1", new SelectOptions("OrderIndex", SortOrder.Ascending), 0).Items;
+        }
+    }
+
+    public static List<ProductCategory> RootCategoriesActive
+    {
+        get
+        {
+            return Schema.Categories.Select("ParentCategoryID = @1 AND Active = @2", new SelectOptions("OrderIndex", SortOrder.Ascending), 0, true).Items;
         }
     }
 

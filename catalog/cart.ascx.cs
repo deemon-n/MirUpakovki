@@ -109,10 +109,10 @@ public partial class cart : UserWintrol, IPostBackEventHandler
         <div class='cart-item'>
             <div class='row'>
                 <div class='col-md-2'>
-                    <a href='{7}/catalog/item.aspx?pid={10}'><img class='img-cart-item' src='{14}' alt='{11}'></a>
+                    <a href='{15}'><img class='img-cart-item' src='{14}' alt='{11}'></a>
                 </div>
                 <div class='col-md-6'>
-                    <div class='title-cart-item'><a href='{7}/catalog/item.aspx?pid={10}'>{11}</a></div>
+                    <div class='title-cart-item'><a href='{15}'>{11}</a></div>
                     <div class='article-cart-item'>Код товара: {1}</div>
                     <div class='fav-cart favor-cart-item' pid='{10}' style='width:175px;'><a href='javascript:void(0);'>Добавить в избранное</a></div>
                 </div>
@@ -139,7 +139,7 @@ public partial class cart : UserWintrol, IPostBackEventHandler
         </div>
 ", prod.Photo.PreviewName, prod.Articul, "", ci.ID.ToString(), ci.Quantity, "",
  this.Page.ClientScript.GetPostBackEventReference(this, "rem" + ci.ID.ToString()),
- Env.AppPath, settings, ci.Amount.ToString("N2") + " руб."/*prod.Price.ToString("N2") + " руб."*/, prod.ID, prod.Name, prod.Category.Name, settings, prod.ImageUrl);
+ Env.AppPath, settings, ci.Amount.ToString("N2") + " руб."/*prod.Price.ToString("N2") + " руб."*/, prod.ID, prod.Name, prod.Category.Name, settings, prod.ImageUrl, prod.UrlPath);
         }
 
         this.ltCart.Text = sb.ToString();
@@ -422,7 +422,7 @@ public partial class cart : UserWintrol, IPostBackEventHandler
         sm.IsHtml = true;        
         sm.AddAttachment(new SmtpAttachment(fileName, "Заказ " + order.Number.ToString() + ".xls", false));
         Mail.Send(sm);
-        sa = new SmtpPerson("elena_vinogradova@mirupakovki.com", "Администратор");
+        sa = new SmtpPerson("sekretar@mirupakovki.com", "Администратор");
         //sa = new SmtpPerson("d.novikov@ramedia.ru", "Администратор");
         sm = new SmtpMessage(sp, sa, false);
         sm.Subject = @"Заказ на сайте Мир упаковки";

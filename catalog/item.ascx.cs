@@ -13,19 +13,29 @@ using Ideal.Wision;
 using MirUpak.Model;
 using Ideal.Core.Imaging;
 
-public partial class catalog_item : UserWintrol
+public partial class catalog_item : UserWintrol, INavigable
 {
     protected Product Product;
-    ProductCategory category;
+    //ProductCategory category;
 
     protected string pidStr = string.Empty;    
     
     protected void Page_Init(object sender, EventArgs e)
-    {        
-        string sid = Env.Request["pid"];
-        if (string.IsNullOrEmpty(sid))
-            Env.PageNotFound();
+    {
         int pid = -1;
+        string spid = Env.Request["pid"];
+        if (Env.RawUrl.Contains("/catalog/item.aspx?pid=" + spid))
+        {
+            if (!int.TryParse(spid, out pid))
+                Env.PageNotFound();
+            Product = MirUpak.Model.Schema.Products[pid];
+            Env.Redirect(Product.UrlPath);
+        }
+
+        //string sid = Env.Request["pid"];
+        string sid = Env.WisionContext.GetRxKeyValue("pid");
+        if (string.IsNullOrEmpty(sid))
+            Env.PageNotFound();        
         if (!int.TryParse(sid, out pid))
             Env.PageNotFound();
         Product = MirUpak.Model.Schema.Products[pid];
@@ -107,4 +117,14 @@ public partial class catalog_item : UserWintrol
             ddlCatChild.Items.Add(new ListItem("нет подкатегорий", "-1"));
         }
     }
+
+    #region INavigable Members
+
+    public INavigator GetNavigator()
+    {
+        if (null == Product.Category) return new RootProductCategoryNavigator();
+        return new ProductCategoryNavigator(Product.Category);
+    }
+
+    #endregion
 }

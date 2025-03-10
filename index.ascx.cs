@@ -29,10 +29,12 @@ public partial class index : UserWintrol
         Env.CurrentLayout.ContentTitle = "";
 
         string urlslider = string.Empty;
+        string cnclck = string.Empty;
         foreach (Ad ad in Ad.GetList())
         {
             urlslider = (ad.Url != string.Empty) ? ad.Url : "javascript:void(0);";
-            ltSlider.Text += String.Format(@"<div class='slide_item'><a href='{2}'><img src='{0}/i/p/{1}' alt='' /></a></div>", Env.AppPath, ad.Image.LargeName, urlslider);
+            cnclck = (ad.Url != string.Empty) ? "yep" : string.Empty;
+            ltSlider.Text += String.Format(@"<div class='slide_item'><a class='indexslider {4}' ix='{3}' href='{2}'><img src='{0}/i/p/{1}' alt='' /></a></div>", Env.AppPath, ad.Image.LargeName, urlslider, ad.ID, cnclck);
         }
 
         xpvSliderProductsSpec.List = Product.SpecialProductsList;

@@ -49,7 +49,7 @@ namespace MirUpak.Model
             get { return this.dateCreated; }
         }
 
-        [Member, UiTitle("Активен")]
+        [Member, UiTitle("Активен"), UiLocation(Location.Both)]
         public bool Active = true;
 
         [Member("Articul"), MaximumLength(64), UiTitle("Код продукта"), UiLocation(Location.Both)]
@@ -284,7 +284,7 @@ namespace MirUpak.Model
             get
             {
                 if (this.HasImage)
-                {                    
+                {
                     if (!this.Special)
                     {
                         if (this.Photo.Exists)
@@ -302,8 +302,16 @@ namespace MirUpak.Model
                         return string.Format("{1}/i/p/{0}", this.PhotoSpec.PreviewName, Env.AppPath);
                     }
                 }
+                if (this.Photo.Exists)
+                {
+                    return string.Format("{1}/i/p/{0}", this.Photo.PreviewName, Env.AppPath);
+                }
+                if (this.PhotoSpec.Exists)
+                {
+                    return string.Format("{1}/i/p/{0}", this.PhotoSpec.PreviewName, Env.AppPath);
+                }
 
-                return String.Format("{0}/ii/t.gif", Env.AppPath);
+                return String.Format("{0}/ii/nophoto.png", Env.AppPath);
             }
         }
 
@@ -340,7 +348,16 @@ namespace MirUpak.Model
                     }
                 }
 
-                return String.Format("{0}/ii/t.gif", Env.AppPath);
+                if (this.Photo.Exists)
+                {
+                    return string.Format("{1}/i/p/{0}", this.Photo.PreviewName, Env.AppPath);
+                }
+                if (this.PhotoSpec.Exists)
+                {
+                    return string.Format("{1}/i/p/{0}", this.PhotoSpec.PreviewName, Env.AppPath);
+                }
+
+                return String.Format("{0}/ii/nophoto.png", Env.AppPath);
             }
         }        
 
@@ -381,12 +398,16 @@ namespace MirUpak.Model
             editor.Resize(previewSize.Width, previewSize.Height, true);
             editor.Save(previewPath, new JpegSaver(95));
 
-            if (!this.HasImage || this.PictureSize != largeSize.Width)
-            {
-                this.PictureSize = largeSize.Width;
-                this.HasImage = true;
-                this.Update();
-            }
+            /*if (!this.HasImage || this.PictureSize != largeSize.Width)
+            {*/
+
+            /*ImageInfo ii = new ImageInfo(largePath, largeSize, largePath, previewSize);
+            this.Photo = ii;*/
+
+            this.PictureSize = largeSize.Width;
+            this.HasImage = true;
+            this.Update();
+            /*}*/
         }
 
 
@@ -397,7 +418,14 @@ namespace MirUpak.Model
         {
             get
             {
-                return String.Format("{0}/catalog/{1}/{2}.aspx", Env.AppPath, this.CategoryID, this.ID);
+                //return String.Format("{0}/catalog/{1}/{2}.aspx", Env.AppPath, this.CategoryID, this.ID);
+
+                if (this.categoryID == 0)
+                    return string.Empty;
+                ProductCategory cat = this.Category;
+                if (null == cat)
+                    return string.Empty;
+                return cat.UrlPath + Text.TransliterateRuEn(this.Name) + "-" + this.id + ".aspx";
             }
         }
 
@@ -636,7 +664,7 @@ namespace MirUpak.Model
 
         public static Product GetByArt(string art)
         {
-            foreach (Product p in Schema.Products.Cache.CachedEntities)
+            foreach (Product p in Schema.Products.SelectAll())
             {
                 if (p.articul.Equals(art, StringComparison.CurrentCultureIgnoreCase))
                     return p;
@@ -701,7 +729,14 @@ namespace MirUpak.Model
 
         public static Product GetByCode(string code)
         {
+            if (code.ToLower().StartsWith("ут-"))
+                code = code.Replace("ут-", "000");
             return Schema.Products.SelectSingle("Code = @1", code);
+        }
+
+        public static Product GetByArticul(string code)
+        {
+            return Schema.Products.SelectSingle("Articul = @1", code);
         }
     }
 

@@ -20,22 +20,24 @@ public partial class importimages : UserWintrol
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Env.CurrentLayout.ContentTitle = "Массовый импорт изображений";
     }
 
-    static Regex rxName = new Regex(@"(?<art>[\d\-]+)\.jpg", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+    //static Regex rxName = new Regex(@"(?<art>[\d\-]+)\.jpg", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+    static Regex rxName = new Regex(@"(?<art>[\w\-]+)\.jpg", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     protected void btnImport_Click(object sender, EventArgs e)
     {
         DirectoryInfo di = new DirectoryInfo(Env.Server.MapPath("~/uimages/"));
-        FileInfo[] fis = di.GetFiles("*.jpg");
+        FileInfo[] fis = di.GetFiles("*.jpg ");
         foreach (FileInfo fi in fis)
         {
             Match m = rxName.Match(fi.Name);
             if (m.Success)
             {
-                string code = m.Groups["art"].Value;
+                string code = m.Groups["art"].Value.ToLower();
                 Product p = Product.GetByCode(code);
-                if (null == p)
+                //Product p = Product.GetByArt(code);
+                if (null == p || string.IsNullOrEmpty(code))
                 {
                     ltMsgs.Text += fi.Name + " отсутствует<br/>";
                     continue;

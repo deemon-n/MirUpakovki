@@ -136,7 +136,7 @@
 <div class="clearfix"></div>
 
 <div class="index-block-map">
-    <script src='http://api-maps.yandex.ru/2.0/?load=package.full&mode=debug&lang=ru-RU' type='text/javascript'></script>
+    <script src='https://api-maps.yandex.ru/2.0/?load=package.full&mode=debug&lang=ru-RU' type='text/javascript'></script>
     <script type="text/javascript">
             var map = null;
             ymaps.ready(function () { 
