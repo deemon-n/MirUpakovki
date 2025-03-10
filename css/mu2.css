@@ -2479,3 +2479,8 @@ a
     .wrapper_popup.block-manager label {
         font-size:10.5pt;
     }
+
+	.img-fluid {
+		width:100%;
+		height:auto;
+	}

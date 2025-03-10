@@ -43,7 +43,7 @@
     
     <link rel="stylesheet" href="<%=AppPath %>/js/owl-carousel/owl.carousel.css" />
     <link rel="stylesheet" href="<%=AppPath %>/css/fonts.css?v=1.1" />
-    <link rel="stylesheet" href="<%=AppPath %>/css/mu2.css?v=1.63" />
+    <link rel="stylesheet" href="<%=AppPath %>/css/mu2.css?v=1.65" />
     <link rel="stylesheet" href="<%=AppPath %>/css/media.css?v=1.14" />
 
 <body>
