@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {    
 
 var modal_options = {    
     preventDefault: true,
@@ -700,7 +700,36 @@ var modal_options_succes = {
         }
     });
 
+    /*showOverlay();
+    $("#loading").show();
+
+    setTimeout(function () {
+        $("#loadingoverlay").hide();
+        $("#loading").hide();
+    }, 3000);*/    
+
 });//READY END
+
+function startOverlay()
+{
+    if (window.location.href.includes("/catalog/")) {
+        showOverlay();
+        $("#loading").show();
+    }
+}
+
+function closeOverlay() {
+    $("#loadingoverlay").hide();
+    $("#loading").hide();
+}
+
+function showOverlay() {    
+    var wwidth = $(document).width();
+    var wheight = $(document).height();
+    $("#loadingoverlay").css("width", (wwidth));
+    $("#loadingoverlay").css("height", (wheight));
+    $("#loadingoverlay").show();
+}
 
 function catalogOffice()
 {

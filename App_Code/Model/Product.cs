@@ -21,7 +21,7 @@ using Ideal.Core.Net;
 
 namespace MirUpak.Model
 {
-    [RelationBackendName("Products2")/*, CacheMode(RelationCacheMode.Super)*/]
+    [RelationBackendName("Products2"), CacheMode(RelationCacheMode.Super)]
     public class Product : Entity<int, Product>, IProduct, IComplexProduct
     {
         #region DAL

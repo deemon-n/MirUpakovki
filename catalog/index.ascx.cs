@@ -26,8 +26,7 @@ public partial class catalog_index : UserWintrol, INavigable
     {
         int id = 0;
         string sid = Env.WisionContext.GetRxKeyValue("cid");
-        string cname = "Категории товаров";
-        List<ProductCategory> lpcs = null;
+        string cname = "Категории товаров";        
         if (sid != null)
         {
             if (!int.TryParse(sid, out id))
@@ -39,49 +38,48 @@ public partial class catalog_index : UserWintrol, INavigable
 
             List<Product> lpsItem = new List<Product>();
             List<Product> _lpsItem = new List<Product>();
-            if (cat.ChildCategoriesActive.Count > 0)
+            List<ProductCategory> lpcs = cat.ChildCategoriesActive;
+            if (lpcs.Count > 0)
             {
                 /*Закомментировать для вывода подкатегорий*/
-                lpcs = cat.ChildCategoriesActive;
                 foreach (ProductCategory pcat in lpcs)
                 {
                     lpsItem = pcat.Products;
                     foreach (Product product in lpsItem)
-                    {
+                    {                        
                         lpsAll.Add(product);
                     }
-                    if (pcat.ChildCategoriesActive.Count > 0)
+                    List<ProductCategory> ___lpcat = pcat.ChildCategoriesActive;
+                    if (___lpcat.Count > 0)
                     {
-                        foreach (ProductCategory _pcat in pcat.ChildCategoriesActive)
+                        foreach (ProductCategory _pcat in ___lpcat)
                         {
                             _lpsItem = _pcat.Products;
                             foreach (Product _product in _lpsItem)
-                            {
+                            {                                
                                 lpsAll.Add(_product);
                             }
                         }
                     }
                 }
-                lpsAll.Sort(CompareByFavorite);//Сортировка по популярности                
+                lpsAll.Sort(CompareByFavorite);            
                 phSortProd.Visible = true;
                 xpvProducts.Arguments.Add("categoryName", cat.Name);
-                xpvProducts.CountPerPage = 16;
-                xpvProducts.List = lpsAll.FindAll(delegate (Product _p) { return _p.Active; });
+                xpvProducts.CountPerPage = 16;                
+                xpvProducts.List = lpsAll;
                 xpvProducts.ShowPageRange = false;
                 /*Закомментировать для вывода подкатегорий КОНЕЦ*/
-
-                /*Раскомментировать для вывода подкатегорий xlvChildCategory.List = cat.ChildCategories;*/
             }
             else
             {
                 lpsAll = cat.Products;
 
-                lpsAll.Sort(CompareByFavorite);//Сортировка по популярности                
+                lpsAll.Sort(CompareByFavorite);
 
                 phSortProd.Visible = true;
                 xpvProducts.Arguments.Add("categoryName", cat.Name);
-                xpvProducts.CountPerPage = 16;
-                xpvProducts.List = lpsAll.FindAll(delegate (Product _p) { return _p.Active; });
+                xpvProducts.CountPerPage = 16;                
+                xpvProducts.List = lpsAll;
                 xpvProducts.ShowPageRange = false;
             }            
         }
@@ -92,18 +90,12 @@ public partial class catalog_index : UserWintrol, INavigable
 
         Env.CurrentLayout.ContentTitle = cname;
 
-        foreach (ProductCategory pc in ProductCategory.RootCategoriesActive)
+        /*foreach (ProductCategory pc in ProductCategory.RootCategoriesActive)
         { 
             ddlCat.Items.Add(new ListItem(pc.Name,pc.ID.ToString()));
-        }
-        //AddDllChildItemCategory();
-
-        //AddItemCategory();
-        //AddItemCategoryChild();
+        }*/
 
         Add_new();
-
-        //xlvChildCategory.List = lpcs;
     }
 
     protected void Page_PreRender(object sender, EventArgs e)
@@ -165,9 +157,7 @@ public partial class catalog_index : UserWintrol, INavigable
                     }
                 }
 
-            }
-
-            //lpf = lpf.FindAll(delegate(Product _p) { return _p.Active; });
+            }            
 
             xlvChildCategory.Visible = false;
             xpvProducts.NoItemsMessage = "Товаров не найдено";
@@ -433,8 +423,9 @@ public partial class catalog_index : UserWintrol, INavigable
         try
         {
             cidDDLCatInt = cat.ID;
-            ProductCategory pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
-            pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
+            /*ProductCategory pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
+            pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);*/
+            ProductCategory  pcCurr = cat;
 
             int k = 1;
             ProductCategory __cat = new ProductCategory();
@@ -470,7 +461,8 @@ public partial class catalog_index : UserWintrol, INavigable
                     }
 
                     cidDDLCatInt = cat.ID;
-                    pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
+                    //pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
+                    pcCurr = cat;
                     _lpc = pcCurr.ChildCategoriesActive;
                     if (_lpc.Count == 0)
                         ddlCatChildChild.Items.Add(new ListItem("нет подкатегорий раздела", "-1"));
@@ -511,7 +503,7 @@ public partial class catalog_index : UserWintrol, INavigable
                     }
 
                     cidDDLCatInt = cat.ParentCategoryID;
-                    pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);
+                    pcCurr = MirUpak.Model.Schema.Categories.SelectKey(cidDDLCatInt);                    
                     _lpc = pcCurr.ChildCategoriesActive;
                     if (_lpc.Count == 0)
                         ddlCatChildChild.Items.Add(new ListItem("нет подкатегорий раздела", "-1"));
@@ -544,12 +536,7 @@ public partial class catalog_index : UserWintrol, INavigable
             foreach (ProductCategory pcc in ProductCategory.RootCategoriesActive)
             {
                 ddlCatChild.Items.Add(new ListItem(pcc.Name, pcc.ID.ToString()));
-            }
-            /*ddlCatChildChild.Items.Add(new ListItem("Выберите раздел", "Выберите раздел"));
-            foreach (ProductCategory pcc in ProductCategory.RootCategories)
-            {
-                ddlCatChildChild.Items.Add(new ListItem(pcc.Name, pcc.ID.ToString()));
-            }*/
+            }            
         }
     }
 

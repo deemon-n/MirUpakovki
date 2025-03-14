@@ -26,91 +26,10 @@
 
 <iwc:xsltpagedview runat="server" id="xpvProducts" CountPerPage="16" stylesheetlocation="~/xsl/products.xsl"></iwc:xsltpagedview>
 
-<%--    <div class="col-md-3">
-        <div class="catalog-item">
-           <div class="catalog-img"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/prod-item.png" alt="" /></a></div>
-           <div class="catalog-name"><a href="<%=AppPath %>/catalog/item.aspx">Трехслойная стирательная резинка</a></div>
-           <div class="catalog-manufact">Brauberg</div>
-           <div class="catalog-add"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/add-cart.png" alt="" /></a>
-            <div class="star"><a href="#"><img src="<%=AppPath %>/ii/star.png" alt="" /></a></div>
-           </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="catalog-item">
-           <div class="catalog-img"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/prod-item.png" alt="" /></a></div>
-           <div class="catalog-name"><a href="<%=AppPath %>/catalog/item.aspx">Трехслойная стирательная резинка</a></div>
-           <div class="catalog-manufact">Brauberg</div>
-           <div class="catalog-add"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/add-cart.png" alt="" /></a>
-            <div class="star"><a href="#"><img src="<%=AppPath %>/ii/star.png" alt="" /></a></div>
-           </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="catalog-item">
-           <div class="catalog-img"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/prod-item.png" alt="" /></a></div>
-           <div class="catalog-name"><a href="<%=AppPath %>/catalog/item.aspx">Трехслойная стирательная резинка</a></div>
-           <div class="catalog-manufact">Brauberg</div>
-           <div class="catalog-add"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/add-cart.png" alt="" /></a>
-            <div class="star"><a href="#"><img src="<%=AppPath %>/ii/star.png" alt="" /></a></div>
-           </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="catalog-item">
-           <div class="catalog-img"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/prod-item.png" alt="" /></a></div>
-           <div class="catalog-name"><a href="<%=AppPath %>/catalog/item.aspx">Трехслойная стирательная резинка</a></div>
-           <div class="catalog-manufact">Brauberg</div>
-           <div class="catalog-add"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/add-cart.png" alt="" /></a>
-            <div class="star"><a href="#"><img src="<%=AppPath %>/ii/star.png" alt="" /></a></div>
-           </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="catalog-item">
-           <div class="catalog-img"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/prod-item.png" alt="" /></a></div>
-           <div class="catalog-name"><a href="<%=AppPath %>/catalog/item.aspx">Трехслойная стирательная резинка</a></div>
-           <div class="catalog-manufact">Brauberg</div>
-           <div class="catalog-add"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/add-cart.png" alt="" /></a>
-            <div class="star"><a href="#"><img src="<%=AppPath %>/ii/star.png" alt="" /></a></div>
-           </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="catalog-item">
-           <div class="catalog-img"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/prod-item.png" alt="" /></a></div>
-           <div class="catalog-name"><a href="<%=AppPath %>/catalog/item.aspx">Трехслойная стирательная резинка</a></div>
-           <div class="catalog-manufact">Brauberg</div>
-           <div class="catalog-add"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/add-cart.png" alt="" /></a>
-            <div class="star"><a href="#"><img src="<%=AppPath %>/ii/star.png" alt="" /></a></div>
-           </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="catalog-item">
-           <div class="catalog-img"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/prod-item.png" alt="" /></a></div>
-           <div class="catalog-name"><a href="<%=AppPath %>/catalog/item.aspx">Трехслойная стирательная резинка</a></div>
-           <div class="catalog-manufact">Brauberg</div>
-           <div class="catalog-add"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/add-cart.png" alt="" /></a>
-            <div class="star"><a href="#"><img src="<%=AppPath %>/ii/star.png" alt="" /></a></div>
-           </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="catalog-item">
-           <div class="catalog-img"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/prod-item.png" alt="" /></a></div>
-           <div class="catalog-name"><a href="<%=AppPath %>/catalog/item.aspx">Трехслойная стирательная резинка</a></div>
-           <div class="catalog-manufact">Brauberg</div>
-           <div class="catalog-add"><a href="<%=AppPath %>/catalog/item.aspx"><img src="<%=AppPath %>/ii/add-cart.png" alt="" /></a>
-            <div class="star"><a href="#"><img src="<%=AppPath %>/ii/star.png" alt="" /></a></div>
-           </div>
-        </div>
-    </div>--%>
+<div class="clearfix"></div>
     
-    <div class="clearfix"></div>
+<%--<div class="more-prod">Загрузить еще</div>--%>
     
-    <%--<div class="more-prod">Загрузить еще</div>--%>
-    
-    <br /><br />
+<br /><br />
     
 </div>

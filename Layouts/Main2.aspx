@@ -43,11 +43,16 @@
     
     <link rel="stylesheet" href="<%=AppPath %>/js/owl-carousel/owl.carousel.css" />
     <link rel="stylesheet" href="<%=AppPath %>/css/fonts.css?v=1.1" />
-    <link rel="stylesheet" href="<%=AppPath %>/css/mu2.css?v=1.65" />
+    <link rel="stylesheet" href="<%=AppPath %>/css/mu2.css?v=1.73" />
     <link rel="stylesheet" href="<%=AppPath %>/css/media.css?v=1.14" />
 
 <body>
+
 <form id="mu2" runat="server">
+
+<div id="loadingoverlay"></div>
+<img id="loading" src="/ii/loading.png" alt="Загрузка каталога" />
+
 <%--<div class="fix-block">
  <div class="menu-fix">
     <div><a href="#"><img src="<%=AppPath %>/ii/rm1.png" alt="" /></a></div>
@@ -588,7 +593,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="<%=AppPath %>/js/slick/slick.min.js"></script>
 	
-	<script src="<%=AppPath %>/js/common.js?v=1.43"></script>
+	<script src="<%=AppPath %>/js/common.js?v=1.47"></script>
 	
 <%--Товар добавлен в корзину--%>	
 <div class="wrapper_popup cart_done text-center">

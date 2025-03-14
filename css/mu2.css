@@ -2484,3 +2484,47 @@ a
 		width:100%;
 		height:auto;
 	}
+
+/**/
+#loadingoverlay {
+	display: none;
+	position: absolute;
+	z-index: 1990;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0,.5);
+}
+
+#loading {
+	display: none;
+	position: fixed;
+	z-index: 1991;
+	top: 50%;
+	left: 50%;
+	width: 200px;
+	height: 200px;
+	margin: -100px 0 0 -100px;
+	-webkit-animation: spin 4s linear infinite;
+	-moz-animation: spin 4s linear infinite;
+	animation: spin 4s linear infinite;
+}
+
+@-moz-keyframes spin {
+	100% {
+		-moz-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+/**/

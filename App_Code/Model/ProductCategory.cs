@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using Ideal.Wision;
 using Ideal.Wision.Schema;
 using MirUpak.Model;
+using System.Linq;
 
 [RelationBackendName("ProductCategories2"), CacheMode(RelationCacheMode.Super)]
 public class ProductCategory : Entity<int, ProductCategory>, INavigable
@@ -233,9 +234,10 @@ public class ProductCategory : Entity<int, ProductCategory>, INavigable
     {
         get
         {
-            List<ProductCategory> lpc = Schema.Categories.Select("ParentCategoryID = @1 AND Active = @2", new SelectOptions("OrderIndex", SortOrder.Ascending), this.ID, true).Items;            
+            //List<ProductCategory> lpc = Schema.Categories.Select("ParentCategoryID = @1 AND Active = @2", new SelectOptions("OrderIndex", SortOrder.Ascending), this.ID, true).Items;
+            List<ProductCategory> lpc = Schema.Categories.Cache.CachedEntities.FindAll(delegate (ProductCategory p) { return p.Active && p.ParentCategoryID == this.ID; });
 
-            lpc = lpc.FindAll(catChecker); // не выводим пустые категории
+            //lpc = lpc.FindAll(catChecker); // не выводим пустые категории
 
             return lpc;            
         }
@@ -274,7 +276,8 @@ public class ProductCategory : Entity<int, ProductCategory>, INavigable
     {
         get
         {
-            return Schema.Products.Select("CategoryID = @1 AND Active = @2", new SelectOptions("OrderIndex", SortOrder.Ascending), this.ID, true).Items;
+            //return Schema.Products.Select("CategoryID = @1 AND Active = @2", new SelectOptions("OrderIndex", SortOrder.Ascending), this.ID, true).Items;
+            return Schema.Products.Cache.CachedEntities.FindAll(delegate (Product p) { return p.Active && p.CategoryID == this.ID; });
         }
     }
 
