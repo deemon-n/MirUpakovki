@@ -510,10 +510,21 @@ public class Wse30TransferHelper : Ideal.ImpexLib.WSE.TransferHelper
                             // try to find product on 3rd nest level
                             foreach (XmlNode xn3 in xn2.SelectNodes("./Items/item"))
                             {
+                                string groupID4 = getStr(xn3, "GroupId");
+                                if (!string.IsNullOrEmpty(groupID4))
+                                {
+                                    string name4 = getStr(xn3, "Name");
+                                    ProductCategory pc4 = ProductCategory.GetByName(pc3, name4);                                    
+                                    foreach (XmlNode xn4 in xn3.SelectNodes("./Items/item"))
+                                    {
+                                        // try to find product on 4nd nest level
+                                        TryToParseElement(rml, pc4, xn4);
+                                    }
+                                }
+                                // try to find product on 3nd nest level
                                 TryToParseElement(rml, pc3, xn3);
                             }
                         }
-
                         // try to find product on 2nd nest level
                         TryToParseElement(rml, pc2, xn2);
                     }
