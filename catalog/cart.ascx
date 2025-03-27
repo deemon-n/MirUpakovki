@@ -282,6 +282,7 @@
 </asp:Panel>
 
 <asp:Panel ID="pnlCheckout" runat="server" Visible="false">
+    <asp:Literal ID="ltScriptPushYaMetrika" EnableViewState="false" runat="server" />
     <p>Спасибо за Ваш заказ<%-- №
     <asp:Label ID="labOrder" runat="server" Font-Bold="True" ForeColor="#0000C0" Text="Label"></asp:Label>--%>!
     </p>
@@ -295,6 +296,8 @@
     //$.cookie('manager', null);
 </script>
 </asp:Panel>
+
+<asp:Literal ID="ltScriptPushYaMetrikaRemove" EnableViewState="false" runat="server" />
 
 <div class="row">
     <div class="col-md-12">

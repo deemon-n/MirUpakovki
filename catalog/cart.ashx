@@ -15,29 +15,31 @@ public class cart : IHttpHandler, System.Web.SessionState.IRequiresSessionState
         string scount = context.Request["count"];
         int count = 0;
         if (null != pid)
-        {            
-                MirUpak.Model.Product prod = MirUpak.Model.Schema.Products[int.Parse(pid)];
-                if (null != prod)
-                {                    
-                    if (!String.IsNullOrEmpty(scount) && int.TryParse(scount, out count))
-                    {
-                        Ideal.Core.Settings.SettingsCollection sc = new Ideal.Core.Settings.SettingsCollection();
-                        sc.SetSettingsValue("count", count.ToString());
-                        
-                        Ideal.Commerce.Engine.Current.CurrentCart.Items.Add(prod, count);
-                    }
-                    else
-                    {
-                        Ideal.Commerce.Engine.Current.CurrentCart.Items.Add(prod);
-                    }
-                }            
-        }
+        {
+            MirUpak.Model.Product prod = MirUpak.Model.Schema.Products[int.Parse(pid)];
+            if (null != prod)
+            {
+                if (!String.IsNullOrEmpty(scount) && int.TryParse(scount, out count))
+                {
+                    Ideal.Core.Settings.SettingsCollection sc = new Ideal.Core.Settings.SettingsCollection();
+                    sc.SetSettingsValue("count", count.ToString());
 
-        Ideal.Commerce.Cart ca = MirUpak.Model.Commerce.Engine.CurrentCart;
-        if (ca.IsEmpty)            
-            context.Response.Write("пуста");
+                    Ideal.Commerce.Engine.Current.CurrentCart.Items.Add(prod, count);
+                    string jsonYaMetrika = JSONProduct.AddProducts.GetJSON(prod, count);
+                    context.Response.Write(jsonYaMetrika);
+                }
+                else
+                {
+                    Ideal.Commerce.Engine.Current.CurrentCart.Items.Add(prod);
+                    string jsonYaMetrika = JSONProduct.AddProducts.GetJSON(prod, 1);
+                    context.Response.Write(jsonYaMetrika);
+                }                
+            }
+            else
+                context.Response.Write("null");
+        }
         else
-        context.Response.Write(string.Format("Услуг: <b id='count-service'>{0}</b> на <b id='price-service'>{1:n2}</b> руб.", ca.Items.Count, ca.TotalAmount));
+            context.Response.Write("null");
     }
 
     public bool IsReusable
@@ -46,5 +48,5 @@ public class cart : IHttpHandler, System.Web.SessionState.IRequiresSessionState
         {
             return false;
         }
-    }    
+    }
 }

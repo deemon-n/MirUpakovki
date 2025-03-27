@@ -79,6 +79,11 @@ public partial class catalog_item : UserWintrol, INavigable
 
         //xpvProductsTop.List = MirUpak.Model.Schema.Products.Select("NewProd = @1", true);
         xpvProductsTop.List = LastViewed.List;
+
+        //Яндекс Метрика. Просмотр товара
+        string jsonYaMetrika = JSONProduct.View.GetJSON(Product);
+        ltScriptPushYaMetrika.Text = string.Format(@"<script type='text/javascript'>dataLayer.push({0});</script>", jsonYaMetrika);
+        //Яндекс Метрика. Просмотр товара
     }
 
     protected void btnSearchProduct_Click(object sender, EventArgs e)

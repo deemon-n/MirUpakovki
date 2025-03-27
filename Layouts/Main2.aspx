@@ -50,6 +50,32 @@
 
 <form id="mu2" runat="server">
 
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a){m[i]=m[i]||function () {(m[i].a = m[i].a || []).push(arguments)};
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(100599022, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true,
+            ecommerce: "dataLayer"
+        });
+    </script>
+    <noscript>
+        <div>
+            <img src="https://mc.yandex.ru/watch/100599022" style="position: absolute; left: -9999px;" alt="" />
+        </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
 <div id="loadingoverlay"></div>
 <img id="loading" src="/ii/loading.png" alt="Загрузка каталога" />
 
@@ -593,7 +619,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="<%=AppPath %>/js/slick/slick.min.js"></script>
 	
-	<script src="<%=AppPath %>/js/common.js?v=1.47"></script>
+	<script src="<%=AppPath %>/js/common.js?v=1.49"></script>
 	
 <%--Товар добавлен в корзину--%>	
 <div class="wrapper_popup cart_done text-center">

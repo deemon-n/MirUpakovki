@@ -121,3 +121,5 @@
     <div class="clearfix"></div>
 </div>
 <br />
+
+<asp:Literal ID="ltScriptPushYaMetrika" EnableViewState="false" runat="server" />

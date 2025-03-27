@@ -121,10 +121,10 @@ public partial class cart : UserWintrol, IPostBackEventHandler
                         <div class='count-cart quant_inner'>
                           <input type=""text"" style=""margin-left: 16px; width:25px"" class='count-input count count-cart-item-cur wide' name=""qty{3}"" value=""{4}"" class=""wide form-control"" />
                           
-                          <div class='quant_button plus-count'>
+                          <div class='quant_button plus-count plus-count-cart' pid={10}>
                             <img src='{7}/ii/plus.png' alt='' />
                           </div>
-                          <div class='quant_button minus-count'>
+                          <div class='quant_button minus-count minus-count-cart' pid={10}>
                             <img src='{7}/ii/minus.png' alt='' />
                           </div>
                         </div>
@@ -247,13 +247,31 @@ public partial class cart : UserWintrol, IPostBackEventHandler
 
             SendEmail(o, fileName);
 
-            Show("check");
+        //Env.RegisterStartupScript("goal", "reachGoalGo('Order')");            
+        //Яндекс Метрика. Совершен заказ
+        string jsonYaMetrika = JSONProduct.PurchaseProducts.GetJSON(o);
+        ltScriptPushYaMetrika.Text = string.Format(@"<script type='text/javascript'>dataLayer.push({0});</script>", jsonYaMetrika);
+        //Яндекс Метрика. Совершен заказ
 
-            Env.RegisterStartupScript("goal", "reachGoalGo('Order')");            
+        Show("check");        
     }
 
     protected void btnClean_Click(object sender, EventArgs e)
     {
+        string output = string.Empty;
+        foreach (CartItem ci in c.Items)
+        {
+            //Яндекс Метрика. Удаление товара
+            Product pm = MirUpak.Model.Schema.Products.SelectSingle("GID = @1", ci.ProductID);
+            if (pm != null)
+            {
+                string jsonYaMetrika = JSONProduct.RemoveProducts.GetJSON(pm, (int)ci.Quantity);
+                output += string.Format(@"dataLayer.push({0});", jsonYaMetrika);
+            }
+            //Яндекс Метрика. Удаление товара
+        }
+        ltScriptPushYaMetrikaRemove.Text = string.Format(@"<script type='text/javascript'>{0}</script>", output);
+
         c.Items.RemoveAll();
         Show("noitems");
     }
@@ -275,7 +293,18 @@ public partial class cart : UserWintrol, IPostBackEventHandler
             {
                 CartItem ci = c.Items.GetItem(new Guid(eventArgument.Remove(0, 3)));
                 if (ci != null)
-                    ci.Remove();
+                {
+                    //Яндекс Метрика. Удаление товара
+                    Product pm = MirUpak.Model.Schema.Products.SelectSingle("GID = @1", ci.ProductID);
+                    if (pm != null)
+                    {
+                        string jsonYaMetrika = JSONProduct.RemoveProducts.GetJSON(pm, (int)ci.Quantity);
+                        ltScriptPushYaMetrikaRemove.Text = string.Format(@"<script type='text/javascript'>dataLayer.push({0});</script>", jsonYaMetrika);
+                    }
+                    //Яндекс Метрика. Удаление товара
+
+                    ci.Remove();                    
+                }
             }
         }
 

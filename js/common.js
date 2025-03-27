@@ -163,15 +163,54 @@ var modal_options_succes = {
 		$("div.right_panel").animate({right:'205px'},500);}, function() {
 		$("div.right_panel").animate({right:0},500);
 	});*/
+
+    $(".plus-count-cart").on('click', function () {
+        var pid = $(this).attr("pid");
+        $.ajax({
+            async: true,
+            cache: false,
+            dataType: 'html',
+            reload: false,
+            getData: 'data-ajax',
+            setContent: true,
+            spinner: false,
+            url: "/catalog/plusminusmetrika.ashx?pid=" + pid + "&type=plus",
+            success: function (data) {
+                //Яндекс Метрика. Добавление в корзину в корзине
+                if (data !== "null")
+                    dataLayer.push(data);
+                //Яндекс Метрика. Добавление в корзину в корзине
+            }
+        }); 
+    });
+    $(".minus-count-cart").on('click', function () {
+        var pid = $(this).attr("pid");
+        $.ajax({
+            async: true,
+            cache: false,
+            dataType: 'html',
+            reload: false,
+            getData: 'data-ajax',
+            setContent: true,
+            spinner: false,
+            url: "/catalog/plusminusmetrika.ashx?pid=" + pid + "&type=minus",
+            success: function (data) {
+                //Яндекс Метрика. Удаление из корзины в корзине
+                if (data !== "null")
+                    dataLayer.push(data);
+                //Яндекс Метрика. Удаление из корзины в корзине
+            }
+        }); 
+    });
 	
 	$(".plus-count").on('click', function () {
 	    var curr_count = $(this).parents('.count-cart').find('.count');
-        var count = curr_count.val();
+        var count = curr_count.val();        
          if ($.isNumeric(count))
          {
             count++;
-            curr_count.val(count);
-         }                
+            curr_count.val(count);             
+         }
     })
     $(".minus-count").on('click', function () {
 	    var curr_count = $(this).parents('.count-cart').find('.count');
@@ -222,19 +261,19 @@ var modal_options_succes = {
                 spinner: false,
                 url: "/catalog/cart.ashx?pid=" + pid + "&count=" + prodCount,
                 //url: "/Web/catalog/cart.ashx?pid=" + pid + "&count=" + prodCount,
-                success: function(data) {  
-                RefreshCartCount();                               
-                //alert(data);
+                success: function(data)
+                {  
+                    RefreshCartCount();                    
                 
-                myModal = new jBox('Modal', modal_options_call);           
-                content = $('.cart_done');
-                myModal.open().setContent(content); 
-                myModalCartDone = myModal;
-                            
-                /*mc_notice = new jBox('Notice', modal_options_succes);
-                mc_notice.setContent("Добавлено в корзину!");*/
-                
-                //window.parent.$.fancybox.close();
+                    myModal = new jBox('Modal', modal_options_call);           
+                    content = $('.cart_done');
+                    myModal.open().setContent(content); 
+                    myModalCartDone = myModal;
+
+                    //Яндекс Метрика. Добавление в корзину
+                    if (data !== "null")
+                        dataLayer.push(data);
+                    //Яндекс Метрика. Добавление в корзину
                 }
         });         
         
