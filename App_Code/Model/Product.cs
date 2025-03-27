@@ -369,7 +369,7 @@ namespace MirUpak.Model
                 Directory.CreateDirectory(destDir + folderCode.ToString());
             destDir = destDir + folderCode.ToString() + "\\";
             string largePath = string.Concat(destDir, ID.ToString(), "l.jpg");
-            string previewPath = string.Concat(destDir, ID.ToString(), "s.jpg");
+            string previewPath = string.Concat(destDir, ID.ToString(), "s.jpg");            
 
             try
             {
@@ -407,6 +407,9 @@ namespace MirUpak.Model
             this.PictureSize = largeSize.Width;
             this.HasImage = true;
             this.Update();
+
+            //File.Move(fileName, fileNameDone);
+
             /*}*/
         }
 
@@ -731,6 +734,8 @@ namespace MirUpak.Model
         {
             if (code.ToLower().StartsWith("ут-"))
                 code = code.Replace("ут-", "000");
+            if (code.ToLower().StartsWith("ка-"))
+                code = code.Replace("ка-", "000");
             return Schema.Products.SelectSingle("Code = @1", code);
         }
 

@@ -27,10 +27,14 @@ public partial class importimages : UserWintrol
     static Regex rxName = new Regex(@"(?<art>[\w\-]+)\.jpg", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     protected void btnImport_Click(object sender, EventArgs e)
     {
+        string destDir = Env.Server.MapPath("~/uimages/");
+        string nameDestDir = string.Empty;
+        string doneDir = Env.Server.MapPath("~/uimages/done/");
+        string nameDoneDir = string.Empty;
         DirectoryInfo di = new DirectoryInfo(Env.Server.MapPath("~/uimages/"));
         FileInfo[] fis = di.GetFiles("*.jpg ");
         foreach (FileInfo fi in fis)
-        {
+        {            
             Match m = rxName.Match(fi.Name);
             if (m.Success)
             {
@@ -46,6 +50,10 @@ public partial class importimages : UserWintrol
                 try
                 {
                     p.CreateImageFromFile(fi.FullName);
+                    ltMsgs.Text += fi.Name + " добавлен!<br/>";
+                    if (File.Exists(string.Concat(doneDir, fi.Name)))
+                        File.Delete(string.Concat(doneDir, fi.Name));
+                    File.Move(string.Concat(destDir, fi.Name), string.Concat(doneDir, fi.Name));
                 }
                 catch (Exception ex)
                 {

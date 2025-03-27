@@ -514,7 +514,7 @@ public class Wse30TransferHelper : Ideal.ImpexLib.WSE.TransferHelper
                                 if (!string.IsNullOrEmpty(groupID4))
                                 {
                                     string name4 = getStr(xn3, "Name");
-                                    ProductCategory pc4 = ProductCategory.GetByName(pc3, name4);                                    
+                                    ProductCategory pc4 = ProductCategory.GetByName(pc3, name4);
                                     foreach (XmlNode xn4 in xn3.SelectNodes("./Items/item"))
                                     {
                                         // try to find product on 4nd nest level
