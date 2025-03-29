@@ -550,17 +550,16 @@
                 <%--<a target="_blank" href="https://www.instagram.com/mir_upakovki/"><img src="<%=AppPath %>/ii/insta_green.jpg" alt="insta" /></a>--%>
             </div>
             <div class="titlefooter gray gilroy-font">
-                2017 Компания "Мир Упаковки"<br />
+                <%=DateTime.Now.Year %> Компания "Мир Упаковки"<br />
                 156009, г. Кострома, ул. Юбилейная, 24<br />
-                Тел.: +7 (4942) 440-888
+                Тел.: +7 (4942) 440-888<br />
+                <a class="gray" href="mailto:mail@mirupakovki.com">mail@mirupakovki.com</a>
             </div>  
-            <div class="ya_informer">
-                <!-- Yandex.Metrika informer -->
+            <%--<div class="ya_informer">                
                 <a href="https://metrika.yandex.ru/stat/?id=46567563&amp;from=informer"
                 target="_blank" rel="nofollow"><img src="https://metrika-informer.com/informer/46567563/3_1_FFFFFFFF_EFEFEFFF_0_uniques"
-                style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="46567563" data-lang="ru" /></a>
-                <!-- /Yandex.Metrika informer -->          
-            </div>
+                style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="46567563" data-lang="ru" /></a>                
+            </div>--%>
         </div>
         <div class="clearfix"></div>
         </div>
