@@ -565,7 +565,9 @@ public class Wse30TransferHelper : Ideal.ImpexLib.WSE.TransferHelper
                 bool sale = (Convert.ToInt32(Math.Floor(getDbl(xn2, "Sale"))) == 1) ? true : false;
 
                 Guid pid = new Guid(elementId);
-                Product p = Schema.Products.SelectSingle("GID = @1", pid);
+                //Product p = Schema.Products.SelectSingle("GID = @1", pid);
+                Product p = Schema.Products.Cache.CachedEntities.Find(delegate (Product _p) { return (_p.GID == pid); });
+                
                 if (null == p)
                 {
                     p = Schema.Products.CreateNew();

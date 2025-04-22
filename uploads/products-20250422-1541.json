@@ -1,4 +1,4 @@
-﻿{
+{
 "Groups": [
 {
 "GroupId": "738866e7-2ecd-11ef-81bf-704d7bb7882d",
@@ -14,8 +14,8 @@
 "Article": "Б-1254",
 "Code": "00000268019",
 "Sale": "0",
-"Count": 22,
-"Price": 24.3
+"Count": 999,
+"Price": 77.7
 },
 {
 "ElementId": "16779e33-522c-11ea-80fe-704d7bb7882d",
