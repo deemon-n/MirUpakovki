@@ -31,26 +31,42 @@ public class feedback : IHttpHandler
             string mailcomplaint = context.Request["mailcomplaint"];
             string infocomplaint = context.Request["infocomplaint"];
 
-            string subject = "Сообщение с сайта Мир упаковки. Жалобы и предложения";
-            //string from = "Сообщение с сайта Мир упаковки. Жалобы и предложения";
+            string subject = "Сообщение с сайта Мир упаковки. Жалобы и предложения";            
             string message = "Фамилия: " + firstnamecomplaint + "\r\n";
             message += "Имя: " + lastnamecomplaint + "\r\n";
             message += "Телефон: " + phonecomplaint + "\r\n";
             message += "Email: " + mailcomplaint + "\r\n";
             message += "Текст сообщения: " + infocomplaint + "\r\n";
-            message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
-            //Ideal.Core.Net.SmtpServer ssrv = new Ideal.Core.Net.SmtpServer("89.208.146.168");
-            foreach (string email in Variables.OrderEmails)
+            message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();            
+
+            sa = new SmtpPerson("150@mirupakovki.com", "Администратор");            
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("sekretar@mirupakovki.com", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("d.novikov@ramedia.ru", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+
+            /*foreach (string email in Variables.OrderEmails)
             {
                 sa = new SmtpPerson(email, "Посетитель сайта");
                 sm = new SmtpMessage(sp, sa, false);
                 sm.Subject = subject;
                 sm.Body = message;
                 sm.IsHtml = false;
-                Mail.Send(sm);
-                /*Ideal.Core.Net.SmtpMessage smsg = new Ideal.Core.Net.SmtpMessage(new Ideal.Core.Net.SmtpPerson("info@ramedia.ru", from), new Ideal.Core.Net.SmtpPerson(email), subject, message, false);
-                Ideal.Core.Net.Smtp.SendMail(ssrv, smsg);*/
-            }
+                Mail.Send(sm);                
+            }*/
 
             context.Response.Write(string.Format("1"));
         } else
@@ -59,24 +75,39 @@ public class feedback : IHttpHandler
             string helpName = context.Request["helpName"];
             string helpPhone = context.Request["helpPhone"];
 
-            string subject = "Сообщение с сайта Мир упаковки. Заказать звонок";
-            //string from = "Сообщение с сайта Мир упаковки. Заказать звонок";
+            string subject = "Сообщение с сайта Мир упаковки. Заказать звонок";            
             string message = "Имя: " + helpName + "\r\n";
             message += "Телефон: " + helpPhone + "\r\n";
             message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
 
-            //Ideal.Core.Net.SmtpServer ssrv = new Ideal.Core.Net.SmtpServer("89.208.146.168");
-            foreach (string email in Variables.OrderEmails)
+            sa = new SmtpPerson("150@mirupakovki.com", "Администратор");            
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("sekretar@mirupakovki.com", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("d.novikov@ramedia.ru", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+
+            /*foreach (string email in Variables.OrderEmails)
             {
                 sa = new SmtpPerson(email, "Посетитель сайта");
                 sm = new SmtpMessage(sp, sa, false);
                 sm.Subject = subject;
                 sm.Body = message;
                 sm.IsHtml = false;
-                Mail.Send(sm);
-                /*Ideal.Core.Net.SmtpMessage smsg = new Ideal.Core.Net.SmtpMessage(new Ideal.Core.Net.SmtpPerson("info@ramedia.ru", from), new Ideal.Core.Net.SmtpPerson(email), subject, message, false);
-                Ideal.Core.Net.Smtp.SendMail(ssrv, smsg);*/
-            }
+                Mail.Send(sm);                
+            }*/
 
             context.Response.Write(string.Format("1"));
         } else
@@ -84,22 +115,38 @@ public class feedback : IHttpHandler
         {
             string mailMail = context.Request["mailMail"];
 
-            string subject = "Сообщение с сайта Мир упаковки. Подпишитесь на рассылку";
-            //string from = "Сообщение с сайта Мир упаковки. Подпишитесь на рассылку";
+            string subject = "Сообщение с сайта Мир упаковки. Подпишитесь на рассылку";            
             string message = "E-mail: " + mailMail + "\r\n";
-            message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
-            //Ideal.Core.Net.SmtpServer ssrv = new Ideal.Core.Net.SmtpServer("89.208.146.168");
-            foreach (string email in Variables.OrderEmails)
+            message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString(); 
+                
+            sa = new SmtpPerson("150@mirupakovki.com", "Администратор");            
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("sekretar@mirupakovki.com", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("d.novikov@ramedia.ru", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+
+            /*foreach (string email in Variables.OrderEmails)
             {
                 sa = new SmtpPerson(email, "Посетитель сайта");
                 sm = new SmtpMessage(sp, sa, false);
                 sm.Subject = subject;
                 sm.Body = message;
                 sm.IsHtml = false;
-                Mail.Send(sm);
-                /*Ideal.Core.Net.SmtpMessage smsg = new Ideal.Core.Net.SmtpMessage(new Ideal.Core.Net.SmtpPerson("info@ramedia.ru", from), new Ideal.Core.Net.SmtpPerson(email), subject, message, false);
-                Ideal.Core.Net.Smtp.SendMail(ssrv, smsg);*/
-            }
+                Mail.Send(sm);                
+            }*/
 
             context.Response.Write(string.Format("1"));
         } else
@@ -107,22 +154,38 @@ public class feedback : IHttpHandler
         {
             string mailMail = context.Request["mail"];
 
-            string subject = "Сообщение с сайта Мир упаковки. Получайте уникальные предложения первыми";
-            //string from = "Сообщение с сайта Мир упаковки. Получайте уникальные предложения первыми";
+            string subject = "Сообщение с сайта Мир упаковки. Получайте уникальные предложения первыми";            
             string message = "E-mail: " + mailMail + "\r\n";
-            message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
-            //Ideal.Core.Net.SmtpServer ssrv = new Ideal.Core.Net.SmtpServer("89.208.146.168");
-            foreach (string email in Variables.OrderEmails)
+            message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();  
+            
+            sa = new SmtpPerson("150@mirupakovki.com", "Администратор");            
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("sekretar@mirupakovki.com", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("d.novikov@ramedia.ru", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+
+            /*foreach (string email in Variables.OrderEmails)
             {
                 sa = new SmtpPerson(email, "Посетитель сайта");
                 sm = new SmtpMessage(sp, sa, false);
                 sm.Subject = subject;
                 sm.Body = message;
                 sm.IsHtml = false;
-                Mail.Send(sm);
-                /*Ideal.Core.Net.SmtpMessage smsg = new Ideal.Core.Net.SmtpMessage(new Ideal.Core.Net.SmtpPerson("info@ramedia.ru", from), new Ideal.Core.Net.SmtpPerson(email), subject, message, false);
-                Ideal.Core.Net.Smtp.SendMail(ssrv, smsg);*/
-            }
+                Mail.Send(sm);                
+            }*/
 
             context.Response.Write(string.Format("1"));
         } else
@@ -133,25 +196,41 @@ public class feedback : IHttpHandler
             string lastnamedesign = context.Request["lastnamedesign"];
             string maildesign = context.Request["maildesign"];
 
-            string subject = "Сообщение с сайта Мир упаковки. Портфолио. Заказать дизайн";
-            //string from = "Сообщение с сайта Мир упаковки. Портфолио. Заказать дизайн";
+            string subject = "Сообщение с сайта Мир упаковки. Портфолио. Заказать дизайн";            
             string message = "Фамилия: " + firstnamedesign + "\r\n";
             message += "Имя: " + lastnamedesign + "\r\n";
             message += "Телефон: " + phonedesign + "\r\n";
             message += "Email: " + maildesign + "\r\n";
             message += "\r\n" + "Время отправки: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
-            //Ideal.Core.Net.SmtpServer ssrv = new Ideal.Core.Net.SmtpServer("89.208.146.168");
-            foreach (string email in Variables.OrderEmails)
+
+            sa = new SmtpPerson("150@mirupakovki.com", "Администратор");            
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("sekretar@mirupakovki.com", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+            sa = new SmtpPerson("d.novikov@ramedia.ru", "Администратор");
+            sm = new SmtpMessage(sp, sa, false);
+            sm.Subject = subject;
+            sm.Body = message;
+            sm.IsHtml = false;                    
+            Mail.Send(sm);
+
+            /*foreach (string email in Variables.OrderEmails)
             {
                 sa = new SmtpPerson(email, "Посетитель сайта");
                 sm = new SmtpMessage(sp, sa, false);
                 sm.Subject = subject;
                 sm.Body = message;
                 sm.IsHtml = false;
-                Mail.Send(sm);
-                /*Ideal.Core.Net.SmtpMessage smsg = new Ideal.Core.Net.SmtpMessage(new Ideal.Core.Net.SmtpPerson("info@ramedia.ru", from), new Ideal.Core.Net.SmtpPerson(email), subject, message, false);
-                Ideal.Core.Net.Smtp.SendMail(ssrv, smsg);*/
-            }
+                Mail.Send(sm);                
+            }*/
 
             context.Response.Write(string.Format("1"));
         }

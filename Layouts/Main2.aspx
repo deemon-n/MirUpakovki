@@ -463,12 +463,19 @@
         <cc1:container id="contDefault" runat="server"></cc1:container>
         
         <div class="separ"></div>
-        <div class="title-contant">Нужна помощь?</div>
-        <div class="row">
+        <div class="title-contant" style="text-align:center; margin-bottom:30px;">Нужна помощь в выборе товара?</div>
+    <div class="row">
         <div class="col-md-4">
-            <div class="help-title">Нужна помощь в выборе товара</div>
-            <div class="help-tel gilroy-font">+7 (4942) 440-888</div>
+            <div class="help-title">Позвоните</div>
+            <div class="help-tel gilroy-font"><a style="color:#7f7f7f;" href="tel:+74942440888">+7 (4942) 440-888</a></div>
             <div class="help-descr"></div>
+            <div class="titlefooter help-title" style="margin-top:20px;text-transform: none;font-size: 11pt;">Подпишитесь на соц. сети</div>
+            <div class="social-footer">                
+                <a target="_blank" href="https://vk.com/mir.upakovki"><img src="<%=AppPath %>/ii/vk_green.jpg" alt="vk" /></a>                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="help-title">Напишите, и мы перезвоним</div>
             <div class="help-form">
                 <input type="text" name="helpName" placeholder="введите имя">
                 <input type="text" name="helpPhone" placeholder="введите телефон">
@@ -476,23 +483,17 @@
             </div>
         </div>
         <div class="col-md-4">
-        <div class="help-title">Подпишитесь на рассылку</div>        
-        <div class="help-descr">Подпишитесь на нашу рассылку и моментально получайте информацию о новинках и акциях.</div>
-        <div class="help-form" style="margin-top:20px;">            
-            <input type="text" name="mailMail" placeholder="введите E-mail">
-            <div class="btn-send call-mail" style="margin-top:18px;">Подписаться на рассылку</div>
+            <div class="help-title">Вы чем-то недовольны или у вас есть пожелания?</div>
+            <div class="help-descr">Для улучшения качества нашей работы оставьте свой отзыв. Нам важно знать Ваше мнение!</div>
+            <div class="help-form" style="margin-top: 43px;">
+                <div class="btn-send call-complaint" style="margin-top: 39px;">Жалобы и предожения</div>
+            </div>
         </div>
-        </div>
-        <div class="col-md-4">
-        <div class="help-title">Вы чем-то недовольны или у вас есть пожелания?</div>        
-        <div class="help-descr">Для улучшения качества нашей работы оставьте свой отзыв. Нам важно знать Ваше мнение!</div>
-        <div class="help-form" style="margin-top:79px;">
-            <div class="btn-send call-complaint" style="margin-top:39px;">Жалобы и предожения</div>
-        </div>
-        </div>
-        </div>       
+    </div>      
 </div> 
 </div>
+
+<br />
 
 <div class="container">
 <div class="container-block">
@@ -510,6 +511,8 @@
     </div>
 </div>
 </div>
+
+<br />
 
 <footer>
     <div class="container">
@@ -543,12 +546,7 @@
             <div><a href="<%=AppPath %>/catalog/9/">Сезонные товары</a></div>
             <div><a href="<%=AppPath %>/catalog/10/">Упаковка для пищевых производств</a></div>--%>
         </div>
-        <div class="col-md-3">
-            <div class="titlefooter">Подпишитесь на соц. сети</div>
-            <div class="social-footer">                
-                <a target="_blank" href="https://vk.com/mir.upakovki"><img src="<%=AppPath %>/ii/vk_green.jpg" alt="vk" /></a>
-                <%--<a target="_blank" href="https://www.instagram.com/mir_upakovki/"><img src="<%=AppPath %>/ii/insta_green.jpg" alt="insta" /></a>--%>
-            </div>
+        <div class="col-md-3">            
             <div class="titlefooter gray gilroy-font">
                 <%=DateTime.Now.Year %> Компания "Мир Упаковки"<br />
                 156009, г. Кострома, ул. Юбилейная, 24<br />
